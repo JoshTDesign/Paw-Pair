@@ -1,35 +1,73 @@
+<<<<<<< HEAD
 const quizContainer = document.getElementById('quiz');
 const result = document.getElementById('result');
 const submitButton = document.getElementById('submit');
-
-
-
+=======
 //add global variables
-//var petsize=2;
-//var petActive=2;
-//var petType=2;
+var start = document.querySelector("#startQuiz");
+var petsize = 2;
+var petActive = 2;
+var petType = 2;
 //var searchUrl;
+
+>>>>>>> ba60f941951679203d713c43fc277993451fc5b8
+
+//quiz array
+//object with question, response1, response2
+//example:
+//Love getting outdoors and exploring    Yeah, bring it on!(active dog breeds dog+  active+)  I watch nature shows all the time! (cat+  notActive+)
+//I like to curl up on a couch and cuddle    Yep, that sounds perfect    Not really, I like my space...
+//I want a pet that holds down the fort while I'm at work   
+var quizArray = [
+    { question: 'Lorem ipsum 0', response1: 'Response 1', response2: 'Response 2' },
+    { question: 'Lorem ipsum 1', response1: 'Response 1', response2: 'Response 2' },
+    { question: 'Lorem ipsum 2', response1: 'Response 1', response2: 'Response 2' },
+    { question: 'Lorem ipsum 3', response1: 'Response 1', response2: 'Response 2' },
+    { question: 'Lorem ipsum 4', response1: 'Response 1', response2: 'Response 2' },
+];
+
 
 
 //-----------------------STEP ONE -------------------------//
 //start quiz button event listener
+start.addEventListener("click", startQuiz());
 //button should call startQuiz() function
 
 
 //-----------------------STEP TWO -------------------------//
-//startQuiz function {
-//set variables 'petSize=2', 'petActive=2', 'petType=2'
-//set variable quizNumber = 0;
-//clearPage();
-//setQuestion(0);
-//}
+function startQuiz() {
+    //set variables 
+    var petSize = 2;
+    var petActive = 2;
+    var petType = 2;
+    var quizNumber = 0;
+    clearPage();
+    setQuestion(0);
+}
 
 
 //----------------------STEP THREE------------------------//
-// setQuestion function {
-// clearPage();
-// add question element to page 
-// add response buttons to page
+function setQuestion(number) {
+clearPage();
+console.log(quizArray);
+$('<div/>').attr('class', 'container box').attr('id', 'test').appendTo('#main');
+$('<h1/>').attr('id', 'question').text('Question ' + number + ' Placeholder').appendTo('#test');
+$('<button/>').attr('class', 'button').attr('id', 'response1').text('Response 1').appendTo('#test');
+$('<button/>').attr('class', 'button').attr('id', 'response2').text('Response2').appendTo('#test');
+
+$('.button').on('click', function(){
+    questionNumber++;
+    clearPage();
+    if (questionNumber === 5) {
+        setResults();
+    } else {
+    setQuestion(questionNumber);
+    }
+})
+}
+var questionNumber = 0;
+setQuestion(questionNumber);
+
 // on button click: 
 //  clearPage()
 //  add +1 to var quizNumber
@@ -40,11 +78,13 @@ const submitButton = document.getElementById('submit');
 
 
 //----------------------STEP FOUR-------------------------//
-// setResults function {
-// clearPage()
+function setResults() {
+    clearPage();
+    $('<div/>').attr('class', 'container box').attr('id', 'test').appendTo('#main');
+    $('<h1/>').attr('id', 'question').text('setResults Placeholder').appendTo('#test');    
 //  run fetch()
 //  show reults of fetch
-// }
+}
 
         
 //----------------------QUIZ TRACKING---------------//
@@ -78,8 +118,10 @@ document.getElementById('#notActive').addEventListener('click', function() {
 
 
 //----------------------CLEAR PAGE FUNCTION---------------//
-//clearPage function;
-//removes main div contents from page
+function clearPage() {
+    $("section").children().remove();
+    console.log('hello');
+}
 
 
 
@@ -87,16 +129,3 @@ document.getElementById('#notActive').addEventListener('click', function() {
 
 
 
-//quiz array
-//object with question, response1, response2
-//example:
-//Love getting outdoors and exploring    Yeah, bring it on!(active dog breeds dog+  active+)  I watch nature shows all the time! (cat+  notActive+)
-//I like to curl up on a couch and cuddle    Yep, that sounds perfect    Not really, I like my space...
-//I want a pet that holds down the fort while I'm at work   
-var quizArray = [
-    {question: 'Lorem ipsum 0', response1:'Response 1', response2:'Response 2'}, 
-    {question: 'Lorem ipsum 1', response1:'Response 1', response2:'Response 2'}, 
-    {question: 'Lorem ipsum 2', response1:'Response 1', response2:'Response 2'}, 
-    {question: 'Lorem ipsum 3', response1:'Response 1', response2:'Response 2'}, 
-    {question: 'Lorem ipsum 4', response1:'Response 1', response2:'Response 2'}, 
-];
