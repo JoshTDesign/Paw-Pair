@@ -1,26 +1,27 @@
-
-
-
-
 //add global variables
-//var petsize=2;
-//var petActive=2;
-//var petType=2;
+var start = document.querySelector("#startQuiz");
+var petsize = 2;
+var petActive = 2;
+var petType = 2;
 //var searchUrl;
 
 
 //-----------------------STEP ONE -------------------------//
 //start quiz button event listener
+start.addEventListener("click", startQuiz());
 //button should call startQuiz() function
 
 
 //-----------------------STEP TWO -------------------------//
-//startQuiz function {
-//set variables 'petSize=2', 'petActive=2', 'petType=2'
-//set variable quizNumber = 0;
-//clearPage();
-//setQuestion(0);
-//}
+function startQuiz() {
+    //set variables 
+    var petSize = 2;
+    var petActive = 2;
+    var petType = 2;
+    var quizNumber = 0;
+    clearPage();
+    setQuestion(0);
+}
 
 
 //----------------------STEP THREE------------------------//
@@ -72,9 +73,9 @@
 //I like to curl up on a couch and cuddle    Yep, that sounds perfect    Not really, I like my space...
 //I want a pet that holds down the fort while I'm at work   
 var quizArray = [
-    {question: 'Lorem ipsum 0', response1:'Response 1', response2:'Response 2'}, 
-    {question: 'Lorem ipsum 1', response1:'Response 1', response2:'Response 2'}, 
-    {question: 'Lorem ipsum 2', response1:'Response 1', response2:'Response 2'}, 
-    {question: 'Lorem ipsum 3', response1:'Response 1', response2:'Response 2'}, 
-    {question: 'Lorem ipsum 4', response1:'Response 1', response2:'Response 2'}, 
+    { question: 'Lorem ipsum 0', response1: 'Response 1', response2: 'Response 2' },
+    { question: 'Lorem ipsum 1', response1: 'Response 1', response2: 'Response 2' },
+    { question: 'Lorem ipsum 2', response1: 'Response 1', response2: 'Response 2' },
+    { question: 'Lorem ipsum 3', response1: 'Response 1', response2: 'Response 2' },
+    { question: 'Lorem ipsum 4', response1: 'Response 1', response2: 'Response 2' },
 ];
