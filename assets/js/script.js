@@ -1,5 +1,4 @@
 
-
 //add global variables
 //var start = $('#startQuiz');
 var petsize = 2;
@@ -86,9 +85,9 @@ function setQuestion(number) {
 function setResults() {
     clearPage();
     $('<div/>').attr('class', 'container box').attr('id', 'test').appendTo('#main');
-    $('<h1/>').attr('id', 'question').text('setResults Placeholder').appendTo('#test');    
-//  run fetch()
-//  show reults of fetch
+    $('<h1/>').attr('id', 'question').text('setResults Placeholder').appendTo('#test');
+    //  run fetch()
+    //  show reults of fetch
 }
 
 
@@ -123,22 +122,22 @@ document.getElementById('#notActive').addEventListener('click', function() {
     petActivity--
 })
 
-document.getElementById('#dog').addEventListener('click', function() {
+document.getElementById('#dog').addEventListener('click', function () {
     petType++
 })
-document.getElementById('#cat').addEventListener('click', function() {
+document.getElementById('#cat').addEventListener('click', function () {
     petType--
 })
-document.getElementById('#big').addEventListener('click', function() {
+document.getElementById('#big').addEventListener('click', function () {
     petSize++
 })
-document.getElementById('#small').addEventListener('click', function() {
+document.getElementById('#small').addEventListener('click', function () {
     petSize--
 })
-document.getElementById('#active').addEventListener('click', function() {
+document.getElementById('#active').addEventListener('click', function () {
     petActivity++
 })
-document.getElementById('#notActive').addEventListener('click', function() {
+document.getElementById('#notActive').addEventListener('click', function () {
     petActivity--
 })
 
