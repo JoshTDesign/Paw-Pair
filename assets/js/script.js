@@ -1,3 +1,5 @@
+
+=======
 //add global variables
 var start = document.querySelector("#startQuiz");
 var petsize = 2;
@@ -5,6 +7,7 @@ var petActive = 2;
 var petType = 2;
 //var searchUrl;
 
+>>>>>>> develop
 
 //quiz array
 //object with question, response1, response2
@@ -81,6 +84,8 @@ function setResults() {
 }
 
 
+        
+>>>>>>> develop
 //----------------------QUIZ TRACKING---------------//
 //quizTracking function
 //listens for clicks on buttons with id "dog" - adds +1 to petType
@@ -90,6 +95,27 @@ function setResults() {
 //listens for clicks on buttons with id "active" - adds +1 to petActivity
 //listens for clicks on buttoins iwth id "notActive" - takes -1 from petActivity
 
+document.getElementById('#dog').addEventListener('click', function() {
+    petType++
+})
+document.getElementById('#cat').addEventListener('click', function() {
+    petType--
+})
+document.getElementById('#big').addEventListener('click', function() {
+    petSize++
+})
+document.getElementById('#small').addEventListener('click', function() {
+    petSize--
+})
+document.getElementById('#active').addEventListener('click', function() {
+    petActivity++
+})
+document.getElementById('#notActive').addEventListener('click', function() {
+    petActivity--
+})
+
+
+>>>>>>> develop
 
 //----------------------CLEAR PAGE FUNCTION---------------//
 function clearPage() {
