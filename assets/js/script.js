@@ -6,6 +6,22 @@ var petType = 2;
 //var searchUrl;
 
 
+//quiz array
+//object with question, response1, response2
+//example:
+//Love getting outdoors and exploring    Yeah, bring it on!(active dog breeds dog+  active+)  I watch nature shows all the time! (cat+  notActive+)
+//I like to curl up on a couch and cuddle    Yep, that sounds perfect    Not really, I like my space...
+//I want a pet that holds down the fort while I'm at work   
+var quizArray = [
+    { question: 'Lorem ipsum 0', response1: 'Response 1', response2: 'Response 2' },
+    { question: 'Lorem ipsum 1', response1: 'Response 1', response2: 'Response 2' },
+    { question: 'Lorem ipsum 2', response1: 'Response 1', response2: 'Response 2' },
+    { question: 'Lorem ipsum 3', response1: 'Response 1', response2: 'Response 2' },
+    { question: 'Lorem ipsum 4', response1: 'Response 1', response2: 'Response 2' },
+];
+
+
+
 //-----------------------STEP ONE -------------------------//
 //start quiz button event listener
 start.addEventListener("click", startQuiz());
@@ -27,6 +43,7 @@ function startQuiz() {
 //----------------------STEP THREE------------------------//
 function setQuestion(number) {
 clearPage();
+console.log(quizArray);
 $('<div/>').attr('class', 'container box').attr('id', 'test').appendTo('#main');
 $('<h1/>').attr('id', 'question').text('Question ' + number + ' Placeholder').appendTo('#test');
 $('<button/>').attr('class', 'button').attr('id', 'response1').text('Response 1').appendTo('#test');
@@ -86,17 +103,3 @@ function clearPage() {
 
 
 
-
-//quiz array
-//object with question, response1, response2
-//example:
-//Love getting outdoors and exploring    Yeah, bring it on!(active dog breeds dog+  active+)  I watch nature shows all the time! (cat+  notActive+)
-//I like to curl up on a couch and cuddle    Yep, that sounds perfect    Not really, I like my space...
-//I want a pet that holds down the fort while I'm at work   
-var quizArray = [
-    { question: 'Lorem ipsum 0', response1: 'Response 1', response2: 'Response 2' },
-    { question: 'Lorem ipsum 1', response1: 'Response 1', response2: 'Response 2' },
-    { question: 'Lorem ipsum 2', response1: 'Response 1', response2: 'Response 2' },
-    { question: 'Lorem ipsum 3', response1: 'Response 1', response2: 'Response 2' },
-    { question: 'Lorem ipsum 4', response1: 'Response 1', response2: 'Response 2' },
-];
