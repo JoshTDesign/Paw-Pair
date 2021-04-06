@@ -1,7 +1,11 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 const quizContainer = document.getElementById('quiz');
 const result = document.getElementById('result');
 const submitButton = document.getElementById('submit');
+=======
+
+>>>>>>> 85f1ba1eb4ef3831ea3185f643580f6c3b784247
 =======
 //add global variables
 var start = document.querySelector("#startQuiz");
@@ -10,7 +14,11 @@ var petActive = 2;
 var petType = 2;
 //var searchUrl;
 
+<<<<<<< HEAD
 >>>>>>> ba60f941951679203d713c43fc277993451fc5b8
+=======
+>>>>>>> develop
+>>>>>>> 85f1ba1eb4ef3831ea3185f643580f6c3b784247
 
 //quiz array
 //object with question, response1, response2
@@ -86,7 +94,9 @@ function setResults() {
 //  show reults of fetch
 }
 
+
         
+>>>>>>> develop
 //----------------------QUIZ TRACKING---------------//
 //quizTracking function
 //listens for clicks on buttons with id "dog" - adds +1 to petType
@@ -116,6 +126,7 @@ document.getElementById('#notActive').addEventListener('click', function() {
 })
 
 
+>>>>>>> develop
 
 //----------------------CLEAR PAGE FUNCTION---------------//
 function clearPage() {
