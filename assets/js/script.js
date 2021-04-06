@@ -1,7 +1,7 @@
+
 const quizContainer = document.getElementById('quiz');
 const result = document.getElementById('result');
 const submitButton = document.getElementById('submit');
-
 
 
 
@@ -11,6 +11,7 @@ var petSize = 2;
 var petActive = 2;
 var petType = 2;
 //var searchUrl;
+
 
 
 
@@ -90,6 +91,7 @@ function setResults() {
 
 
         
+
 //----------------------QUIZ TRACKING---------------//
 //quizTracking function
 
@@ -119,16 +121,32 @@ document.getElementById('#notActive').addEventListener('click', function() {
     petActivity--
 })
 
+document.getElementById('#dog').addEventListener('click', function() {
+    petType++
+})
+document.getElementById('#cat').addEventListener('click', function() {
+    petType--
+})
+document.getElementById('#big').addEventListener('click', function() {
+    petSize++
+})
+document.getElementById('#small').addEventListener('click', function() {
+    petSize--
+})
+document.getElementById('#active').addEventListener('click', function() {
+    petActivity++
+})
+document.getElementById('#notActive').addEventListener('click', function() {
+    petActivity--
+})
+
+
 
 //----------------------CLEAR PAGE FUNCTION---------------//
 function clearPage() {
     $("section").children().remove();
     console.log('hello');
 }
-
-
-
-
 
 
 
