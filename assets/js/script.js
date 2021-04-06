@@ -1,5 +1,4 @@
 
-=======
 //add global variables
 var start = document.querySelector("#startQuiz");
 var petsize = 2;
@@ -7,7 +6,6 @@ var petActive = 2;
 var petType = 2;
 //var searchUrl;
 
->>>>>>> develop
 
 //quiz array
 //object with question, response1, response2
@@ -45,22 +43,22 @@ function startQuiz() {
 
 //----------------------STEP THREE------------------------//
 function setQuestion(number) {
-clearPage();
-console.log(quizArray);
-$('<div/>').attr('class', 'container box').attr('id', 'test').appendTo('#main');
-$('<h1/>').attr('id', 'question').text('Question ' + number + ' Placeholder').appendTo('#test');
-$('<button/>').attr('class', 'button').attr('id', 'response1').text('Response 1').appendTo('#test');
-$('<button/>').attr('class', 'button').attr('id', 'response2').text('Response2').appendTo('#test');
-
-$('.button').on('click', function(){
-    questionNumber++;
     clearPage();
-    if (questionNumber === 5) {
-        setResults();
-    } else {
-    setQuestion(questionNumber);
-    }
-})
+    console.log(quizArray);
+    $('<div/>').attr('class', 'container box').attr('id', 'test').appendTo('#main');
+    $('<h1/>').attr('id', 'question').text('Question ' + number + ' Placeholder').appendTo('#test');
+    $('<button/>').attr('class', 'button').attr('id', 'response1').text('Response 1').appendTo('#test');
+    $('<button/>').attr('class', 'button').attr('id', 'response2').text('Response2').appendTo('#test');
+
+    $('.button').on('click', function () {
+        questionNumber++;
+        clearPage();
+        if (questionNumber === 5) {
+            setResults();
+        } else {
+            setQuestion(questionNumber);
+        }
+    })
 }
 var questionNumber = 0;
 setQuestion(questionNumber);
@@ -78,14 +76,13 @@ setQuestion(questionNumber);
 function setResults() {
     clearPage();
     $('<div/>').attr('class', 'container box').attr('id', 'test').appendTo('#main');
-    $('<h1/>').attr('id', 'question').text('setResults Placeholder').appendTo('#test');    
-//  run fetch()
-//  show reults of fetch
+    $('<h1/>').attr('id', 'question').text('setResults Placeholder').appendTo('#test');
+    //  run fetch()
+    //  show reults of fetch
 }
 
 
-        
->>>>>>> develop
+
 //----------------------QUIZ TRACKING---------------//
 //quizTracking function
 //listens for clicks on buttons with id "dog" - adds +1 to petType
@@ -95,32 +92,30 @@ function setResults() {
 //listens for clicks on buttons with id "active" - adds +1 to petActivity
 //listens for clicks on buttoins iwth id "notActive" - takes -1 from petActivity
 
-document.getElementById('#dog').addEventListener('click', function() {
+document.getElementById('#dog').addEventListener('click', function () {
     petType++
 })
-document.getElementById('#cat').addEventListener('click', function() {
+document.getElementById('#cat').addEventListener('click', function () {
     petType--
 })
-document.getElementById('#big').addEventListener('click', function() {
+document.getElementById('#big').addEventListener('click', function () {
     petSize++
 })
-document.getElementById('#small').addEventListener('click', function() {
+document.getElementById('#small').addEventListener('click', function () {
     petSize--
 })
-document.getElementById('#active').addEventListener('click', function() {
+document.getElementById('#active').addEventListener('click', function () {
     petActivity++
 })
-document.getElementById('#notActive').addEventListener('click', function() {
+document.getElementById('#notActive').addEventListener('click', function () {
     petActivity--
 })
 
 
->>>>>>> develop
-
 //----------------------CLEAR PAGE FUNCTION---------------//
 function clearPage() {
     $("section").children().remove();
-    console.log('hello');
+    //console.log('hello');
 }
 
 
