@@ -1,7 +1,3 @@
-
-
-
-
 //add global variables
 //var petsize=2;
 //var petActive=2;
@@ -24,10 +20,26 @@
 
 
 //----------------------STEP THREE------------------------//
-// setQuestion function {
-// clearPage();
-// add question element to page 
-// add response buttons to page
+function setQuestion(number) {
+clearPage();
+$('<div/>').attr('class', 'container box').attr('id', 'test').appendTo('#main');
+$('<h1/>').attr('id', 'question').text('Question ' + number + ' Placeholder').appendTo('#test');
+$('<button/>').attr('class', 'button').attr('id', 'response1').text('Response 1').appendTo('#test');
+$('<button/>').attr('class', 'button').attr('id', 'response2').text('Response2').appendTo('#test');
+
+$('.button').on('click', function(){
+    questionNumber++;
+    clearPage();
+    if (questionNumber === 5) {
+        setResults();
+    } else {
+    setQuestion(questionNumber);
+    }
+})
+}
+var questionNumber = 0;
+setQuestion(questionNumber);
+
 // on button click: 
 //  clearPage()
 //  add +1 to var quizNumber
@@ -38,11 +50,13 @@
 
 
 //----------------------STEP FOUR-------------------------//
-// setResults function {
-// clearPage()
+function setResults() {
+    clearPage();
+    $('<div/>').attr('class', 'container box').attr('id', 'test').appendTo('#main');
+    $('<h1/>').attr('id', 'question').text('setResults Placeholder').appendTo('#test');    
 //  run fetch()
 //  show reults of fetch
-// }
+}
 
 
 //----------------------QUIZ TRACKING---------------//
@@ -56,8 +70,11 @@
 
 
 //----------------------CLEAR PAGE FUNCTION---------------//
-//clearPage function;
-//removes main div contents from page
+function clearPage() {
+    $("section").children().remove();
+    console.log('hello');
+}
+
 
 
 
