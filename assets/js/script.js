@@ -46,10 +46,14 @@ const submitButton = document.getElementById('submit');
 //  show reults of fetch
 // }
 
+<<<<<<< HEAD
 
 
 
 
+=======
+        
+>>>>>>> develop
 //----------------------QUIZ TRACKING---------------//
 //quizTracking function
 //listens for clicks on buttons with id "dog" - adds +1 to petType
@@ -78,6 +82,10 @@ document.getElementById('#notActive').addEventListener('click', function() {
     petActivity--
 })
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> develop
 
 //----------------------CLEAR PAGE FUNCTION---------------//
 //clearPage function;
