@@ -1,4 +1,6 @@
-
+const quizContainer = document.getElementById('quiz');
+const result = document.getElementById('result');
+const submitButton = document.getElementById('submit');
 
 
 
@@ -45,6 +47,9 @@
 // }
 
 
+
+
+
 //----------------------QUIZ TRACKING---------------//
 //quizTracking function
 //listens for clicks on buttons with id "dog" - adds +1 to petType
@@ -53,6 +58,25 @@
 //listens for clicks on buttons with id "small" - takes -1 from petSize
 //listens for clicks on buttons with id "active" - adds +1 to petActivity
 //listens for clicks on buttoins iwth id "notActive" - takes -1 from petActivity
+
+document.getElementById('#dog').addEventListener('click', function() {
+    petType++
+})
+document.getElementById('#cat').addEventListener('click', function() {
+    petType--
+})
+document.getElementById('#big').addEventListener('click', function() {
+    petSize++
+})
+document.getElementById('#small').addEventListener('click', function() {
+    petSize--
+})
+document.getElementById('#active').addEventListener('click', function() {
+    petActivity++
+})
+document.getElementById('#notActive').addEventListener('click', function() {
+    petActivity--
+})
 
 
 //----------------------CLEAR PAGE FUNCTION---------------//
