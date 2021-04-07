@@ -24,11 +24,11 @@ var questionNumber;
 
 //quiz array
 var quizArray = [
-    { question: 'Are you a people person?', response1: ['I love a party', 'dog'], response2: ['My pet is my social life', 'notActive']},
-    { question: 'Are you a nontraditional thinker?', response1: ['I think outside of the box', 'small'], response2: ['No ... is that the right answer?', 'large']},
-    { question: 'Are you an outdoorsy person?', response1: ['Yes! Adventure awaits', 'active'], response2: ['Id rather relax at home', 'notActive']},
-    { question: 'How do you live?', response1: ['big yard, space to run', 'big'], response2: ['Its a tiny box, but its my tiny box!', 'small']},
-    { question: 'Are you easily stressed?', response1: ['Nah, nothing phases me', 'dog'], response2: ['This quiz is a bit much for me...', 'cat']},
+    { question: 'Are you a people person?', response1: ['I love a party', 'dog'], response2: ['My pet is my social life', 'notActive'] },
+    { question: 'Are you a nontraditional thinker?', response1: ['I think outside of the box', 'small'], response2: ['No ... is that the right answer?', 'large'] },
+    { question: 'Are you an outdoorsy person?', response1: ['Yes! Adventure awaits', 'active'], response2: ['Id rather relax at home', 'notActive'] },
+    { question: 'How do you live?', response1: ['big yard, space to run', 'big'], response2: ['Its a tiny box, but its my tiny box!', 'small'] },
+    { question: 'Are you easily stressed?', response1: ['Nah, nothing phases me', 'dog'], response2: ['This quiz is a bit much for me...', 'cat'] },
 ];
 
 //Are you a people person - size (1) dog (2) active (2)
@@ -84,7 +84,7 @@ function setQuestion(number) {
         petActive--
     })
 
-$('.button').on('click', function(){
+    $('.button').on('click', function () {
 
         console.log(petSize);
         console.log(petActive);
@@ -107,9 +107,9 @@ $('.button').on('click', function(){
 function setResults() {
     clearPage();
     $('<div/>').attr('class', 'container box').attr('id', 'test').appendTo(document.body);
-    $('<h1/>').attr('id', 'question').text('setResults Placeholder').appendTo('#test');    
-//  run fetch()
-//  show reults of fetch
+    $('<h1/>').attr('id', 'question').text('setResults Placeholder').appendTo('#test');
+    //  run fetch()
+    //  show reults of fetch
 }
 
 
