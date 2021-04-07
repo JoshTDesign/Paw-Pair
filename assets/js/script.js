@@ -121,29 +121,8 @@ function setResults() {
     clearPage();
 
 
-    var petPic = "placeholder";//need link to api
-    var petName = "placeholder";//need link to api
-    var petBreed = "placeholder";//need link to api
-    var petAbout = "placeholder";//need link to api
-
-
     $('<div/>').attr('class', 'container box').attr('id', 'contain').appendTo(document.body);
-    $('<img/>').attr('id', 'pic').attr('href', petPic).appendTo('#contain');    
-    $('<h1/>').attr('id', 'name').text(petName).appendTo('#contain');    
-    $('<h2/>').attr('id', 'breed').text(petBreed).appendTo('#contain');    
-    $('<p/>').attr('id', 'about').text(petAbout).appendTo('#contain'); 
-    $('<button/>').attr('id', 'learnMore').text('Learn more').appendTo('#contain');
-    $('<button/>').attr('id', 'playAgain').text('Play again').appendTo('#contain');  
-    
-    $('#learnMore').on('click', function () {
-        clearPage();
-    // run function to get more info  about pet    
-    })
 
-    $('#playAgain').on('click', function () {
-        clearPage();
-        startQuiz();
-    })
 
 
     $('<div/>').attr('class', 'container box').attr('id', 'test').appendTo(document.body);
@@ -209,9 +188,30 @@ function setResults() {
             return response.json()
             //  show reults of fetch
         }).then(function (data) {
+            var petIndex = Math.floor(Math.random() * 20);  
+                var petPic = data.animals[petIndex].photos[0];
+                var petName = data.animals[petIndex].name;
+                var petBreed = data.animals[petIndex].breeds.primary;
+                var petAbout = data.animals[petIndex].description;
+            $('<img/>').attr('id', 'pic').attr('src', petPic.small).appendTo('#contain');
+            $('<h1/>').attr('id', 'name').text(petName).appendTo('#contain');
+            $('<h2/>').attr('id', 'breed').text(petBreed).appendTo('#contain');
+            $('<p/>').attr('id', 'about').text(petAbout).appendTo('#contain');
             console.log(data);
         });
     });
+    $('<button/>').attr('id', 'learnMore').text('Learn more').appendTo('#contain');
+    $('<button/>').attr('id', 'playAgain').text('Play again').appendTo('#contain');
+
+    $('#learnMore').on('click', function () {
+        clearPage();
+        // run function to get more info  about pet    
+    })
+
+    $('#playAgain').on('click', function () {
+        clearPage();
+        startQuiz();
+    })
 }
 
 
@@ -251,7 +251,7 @@ function setResults() {
 
 //----------------------CLEAR PAGE FUNCTION---------------//
 function clearPage() {
-   // document.body.innerHTML = '';
+    // document.body.innerHTML = '';
 
     $('#contain').children().remove();
 }
