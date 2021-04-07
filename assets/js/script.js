@@ -66,8 +66,8 @@ function startQuiz() {
 function setQuestion(number) {
     clearPage();
 
-    $('<div/>').attr('class', 'hero p-5 is-vcentered').attr('id', 'contain').appendTo(document.body);
-    $('<div/>').attr('id', 'column').attr('class', 'column is-8 has-text-primary is-size-4').appendTo('#contain');
+    $('<div/>').attr('class', 'card p-5 is-vcentered hero is-dark is-fullheight is-flex-direction-column').attr('id', 'contain').appendTo(document.body);
+    $('<div/>').attr('id', 'column').attr('class', 'card-content column is-8 has-text-primary is-size-4').appendTo('#contain');
     $('<h1/>').attr('id', 'question').attr('class', '').text(quizArray[number].question).appendTo('#column');
     $('<button/>').attr('class', 'button my-2 is-primary is-outlined').attr('id', quizArray[number].response1[1]).text(quizArray[number].response1[0]).appendTo('#column');
     $('<button/>').attr('class', 'button my-2 is-primary is-outlined').attr('id', quizArray[number].response2[1]).text(quizArray[number].response2[0]).appendTo('#column');
@@ -87,6 +87,14 @@ function setQuestion(number) {
     //listens for clicks on buttons with id "notActive" - takes -1 from petActivity
     $('#notActive').on('click', function () {
         petActive--
+    })
+    //listens for clicks on buttons with id "dog" - takes +1 from petType
+    $('#dog').on('click', function () {
+        petType++
+    })
+    //listens for clicks on buttons with id "cat" - takes -1 from petType
+    $('#cat').on('click', function () {
+        petType--
     })
 
     $('.button').on('click', function () {
@@ -111,6 +119,33 @@ function setQuestion(number) {
 //----------------------STEP FOUR-------------------------//
 function setResults() {
     clearPage();
+
+
+    var petPic = "placeholder";//need link to api
+    var petName = "placeholder";//need link to api
+    var petBreed = "placeholder";//need link to api
+    var petAbout = "placeholder";//need link to api
+
+
+    $('<div/>').attr('class', 'container box').attr('id', 'contain').appendTo(document.body);
+    $('<img/>').attr('id', 'pic').attr('href', petPic).appendTo('#contain');    
+    $('<h1/>').attr('id', 'name').text(petName).appendTo('#contain');    
+    $('<h2/>').attr('id', 'breed').text(petBreed).appendTo('#contain');    
+    $('<p/>').attr('id', 'about').text(petAbout).appendTo('#contain'); 
+    $('<button/>').attr('id', 'learnMore').text('Learn more').appendTo('#contain');
+    $('<button/>').attr('id', 'playAgain').text('Play again').appendTo('#contain');  
+    
+    $('#learnMore').on('click', function () {
+        clearPage();
+    // run function to get more info  about pet    
+    })
+
+    $('#playAgain').on('click', function () {
+        clearPage();
+        startQuiz();
+    })
+
+
     $('<div/>').attr('class', 'container box').attr('id', 'test').appendTo(document.body);
     $('<h1/>').attr('id', 'question').text('setResults Placeholder').appendTo('#test');
     if (petSize == 0 && petActive <= 1 && petType > 2) {
@@ -216,7 +251,7 @@ function setResults() {
 
 //----------------------CLEAR PAGE FUNCTION---------------//
 function clearPage() {
-    document.body.innerHTML = '';
+   // document.body.innerHTML = '';
 
-    // body.innerHTML = ''.children().remove();
+    $('#contain').children().remove();
 }
