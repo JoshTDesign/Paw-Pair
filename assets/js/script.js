@@ -41,7 +41,7 @@ var quizArray = [
 
 //-----------------------STEP ONE -------------------------//
 //start quiz button event listener
-$('#startQuiz').on('click', function(){
+$('#startQuiz').on('click', function () {
     startQuiz();
 });
 
@@ -81,7 +81,7 @@ $('.button').on('click', function(){
         if (questionNumber === 5) {
             setResults();
         } else {
-        setQuestion(questionNumber);
+            setQuestion(questionNumber);
         }
     })
 }
@@ -99,54 +99,52 @@ function setResults() {
 }
 
 
-        
+
 
 //----------------------QUIZ TRACKING---------------//
 
 //listens for clicks on buttons with id "dog" - adds +1 to petType
 
-
-
-document.getElementById('#dog').addEventListener('click', function() {
+document.getElementById('#dog').addEventListener('click', function () {
     petType++
 })
 //listens for clicks on buttons with id "cat" - takes -1 from petType
-document.getElementById('#cat').addEventListener('click', function() {
+document.getElementById('#cat').addEventListener('click', function () {
     petType--
 })
 //listens for clicks on buttons with id "big" - adds +1 to petSize
-document.getElementById('#big').addEventListener('click', function() {
+document.getElementById('#big').addEventListener('click', function () {
     petSize++
 })
 //listens for clicks on buttons with id "small" - takes -1 from petSize
-document.getElementById('#small').addEventListener('click', function() {
+document.getElementById('#small').addEventListener('click', function () {
     petSize--
 })
 //listens for clicks on buttons with id "active" - adds +1 to petActivity
-document.getElementById('#active').addEventListener('click', function() {
+document.getElementById('#active').addEventListener('click', function () {
     petActivity++
 })
 //listens for clicks on buttons with id "notActive" - takes -1 from petActivity
-document.getElementById('#notActive').addEventListener('click', function() {
+document.getElementById('#notActive').addEventListener('click', function () {
     petActivity--
 })
 
-document.getElementById('#dog').addEventListener('click', function() {
+document.getElementById('#dog').addEventListener('click', function () {
     petType++
 })
-document.getElementById('#cat').addEventListener('click', function() {
+document.getElementById('#cat').addEventListener('click', function () {
     petType--
 })
-document.getElementById('#big').addEventListener('click', function() {
+document.getElementById('#big').addEventListener('click', function () {
     petSize++
 })
-document.getElementById('#small').addEventListener('click', function() {
+document.getElementById('#small').addEventListener('click', function () {
     petSize--
 })
-document.getElementById('#active').addEventListener('click', function() {
+document.getElementById('#active').addEventListener('click', function () {
     petActivity++
 })
-document.getElementById('#notActive').addEventListener('click', function() {
+document.getElementById('#notActive').addEventListener('click', function () {
     petActivity--
 })
 
