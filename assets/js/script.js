@@ -67,6 +67,15 @@ function setQuestion(number) {
     $('<button/>').attr('class', 'button my-2 is-primary is-outlined').attr('id', quizArray[number].response1[1]).text(quizArray[number].response1[0]).appendTo('#column');
     $('<button/>').attr('class', 'button my-2 is-primary is-outlined').attr('id', quizArray[number].response2[1]).text(quizArray[number].response2[0]).appendTo('#column');
 
+
+    // listens for clicks on buttons with id "dog" - adds +1 to petType
+    $('#dog').on('click', function () {
+    petType++
+    })
+//listens for clicks on buttons with id "cat" - takes -1 from petType
+    $('#cat').on('click', function () {
+    petType--
+    })
     //listens for clicks on buttons with id "big" - adds +1 to petSize
     $('#big').on('click', function () {
         petSize++
@@ -101,8 +110,6 @@ $('.button').on('click', function(){
 }
 
 
-
-
 //----------------------STEP FOUR-------------------------//
 function setResults() {
     clearPage();
@@ -110,9 +117,12 @@ function setResults() {
     $('<h1/>').attr('id', 'question').text('setResults Placeholder').appendTo('#test');    
 //  run fetch()
 //  show reults of fetch
+    // localStorage.setItem('results', JSON.stringify());
+    // renderMessage();
 }
-
-
+// function renderMessage() {
+//     var lastResult = JSON.parse(localStorage.getItem('results'));
+// }
 
 
 //----------------------QUIZ TRACKING---------------//
@@ -145,13 +155,9 @@ function setResults() {
 
 
 
-
-
-
-
 //----------------------CLEAR PAGE FUNCTION---------------//
 function clearPage() {
     document.body.innerHTML = '';
 
     // body.innerHTML = ''.children().remove();
-}
+};
