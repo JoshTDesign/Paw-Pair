@@ -123,24 +123,7 @@ document.getElementById('#notActive').addEventListener('click', function() {
     petActivity--
 })
 
-document.getElementById('#dog').addEventListener('click', function() {
-    petType++
-})
-document.getElementById('#cat').addEventListener('click', function() {
-    petType--
-})
-document.getElementById('#big').addEventListener('click', function() {
-    petSize++
-})
-document.getElementById('#small').addEventListener('click', function() {
-    petSize--
-})
-document.getElementById('#active').addEventListener('click', function() {
-    petActivity++
-})
-document.getElementById('#notActive').addEventListener('click', function() {
-    petActivity--
-})
+
 
 
 
