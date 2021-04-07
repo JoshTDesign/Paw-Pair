@@ -116,10 +116,10 @@ function setResults() {
     $('<div/>').attr('class', 'container box').attr('id', 'test').appendTo(document.body);
     $('<h1/>').attr('id', 'question').text('setResults Placeholder').appendTo('#test');    
 //  run fetch()
-//  show reults of fetch
+//  show results of fetch
     // localStorage.setItem('results', JSON.stringify());
     // renderMessage();
-}
+}s
 // function renderMessage() {
 //     var lastResult = JSON.parse(localStorage.getItem('results'));
 // }
