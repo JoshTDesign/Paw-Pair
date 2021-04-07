@@ -1,5 +1,7 @@
 
 
+
+
 //add global variables
 //var start = $('#startQuiz');
 var petsize = 2;
@@ -23,12 +25,18 @@ var questionNumber;
 
 //quiz array
 var quizArray = [
-    { question: 'Are you a people person?', response1: 'Response 1', response2: 'Response 2' },
-    { question: 'Are you a nontraditional thinker?', response1: 'Response 1', response2: 'Response 2' },
-    { question: 'Are you an outdoorsy person?', response1: 'Response 1', response2: 'Response 2' },
-    { question: 'Are you artistic?', response1: 'Response 1', response2: 'Response 2' },
-    { question: 'Are you easily stressed?', response1: 'Response 1', response2: 'Response 2' },
+    { question: 'Are you a people person?', response1: ['I love a party', 'dog'], response2: ['My pet is my social life', 'notActive']},
+    { question: 'Are you a nontraditional thinker?', response1: ['I think outside of the box', 'small'], response2: ['No ... is that the right answer?', 'large']},
+    { question: 'Are you an outdoorsy person?', response1: ['Yes! Adventure awaits', 'active'], response2: ['Id rather relax at home', 'notActive']},
+    { question: 'How do you live?', response1: ['big yard, space to run', 'big'], response2: ['Its a tiny box, but its my tiny box!', 'small']},
+    { question: 'Are you easily stressed?', response1: ['Nah, nothing phases me', 'dog'], response2: ['This quiz is a bit much for me...', 'cat']},
 ];
+
+//Are you a people person - size (1) dog (2) active (2)
+//Are you a nontraditional thinker - size (0) cat (1), nonactive (-1), 
+//Are you an outdoorsy person - size (0) dog (3) active (3)
+//Are you artistic
+
 
 
 //-----------------------STEP ONE -------------------------//
@@ -53,14 +61,21 @@ function startQuiz() {
 //----------------------STEP THREE------------------------//
 function setQuestion(number) {
     clearPage();
-    console.log(quizArray);
-    console.log(number);
-    $('<div/>').attr('class', 'container box').attr('id', 'test').appendTo('#main');
-    $('<h1/>').attr('id', 'question').text(quizArray[number].question).appendTo('#test');
-    $('<button/>').attr('class', 'button').attr('id', 'response1').text('Response 1').appendTo('#test');
-    $('<button/>').attr('class', 'button').attr('id', 'response2').text('Response2').appendTo('#test');
 
-    $('.button').on('click', function(){
+    $('<div/>').attr('class', 'hero p-5 is-vcentered').attr('id', 'contain').appendTo(document.body);
+    $('<div/>').attr('id', 'column').attr('class', 'column is-8 has-text-primary is-size-4').appendTo('#contain');
+    $('<h1/>').attr('id', 'question').attr('class', '').text(quizArray[number].question).appendTo('#column');
+    $('<button/>').attr('class', 'button my-2 is-primary is-outlined').attr('id', quizArray[number].response1[1]).text(quizArray[number].response1[0]).appendTo('#column');
+    $('<button/>').attr('class', 'button my-2 is-primary is-outlined').attr('id', quizArray[number].response2[1]).text(quizArray[number].response2[0]).appendTo('#column');
+
+
+
+$('.button').on('click', function(){
+
+        console.log(petSize);
+        console.log(petActive);
+        console.log(petType);
+
         questionNumber++;
         clearPage();
         if (questionNumber === 5) {
@@ -70,22 +85,14 @@ function setQuestion(number) {
         }
     })
 }
-// var questionNumber = 0;
-// setQuestion(questionNumber);
 
-// on button click: 
-//  clearPage()
-//  add +1 to var quizNumber
-//  if quiz number = 5, run setResults(), else:
-//  setQuestion(quizNumber)
-// }
 
 
 
 //----------------------STEP FOUR-------------------------//
 function setResults() {
     clearPage();
-    $('<div/>').attr('class', 'container box').attr('id', 'test').appendTo('#main');
+    $('<div/>').attr('class', 'container box').attr('id', 'test').appendTo(document.body);
     $('<h1/>').attr('id', 'question').text('setResults Placeholder').appendTo('#test');    
 //  run fetch()
 //  show reults of fetch
@@ -95,9 +102,10 @@ function setResults() {
         
 
 //----------------------QUIZ TRACKING---------------//
-//quizTracking function
 
 //listens for clicks on buttons with id "dog" - adds +1 to petType
+
+
 
 document.getElementById('#dog').addEventListener('click', function() {
     petType++
@@ -146,9 +154,7 @@ document.getElementById('#notActive').addEventListener('click', function() {
 
 //----------------------CLEAR PAGE FUNCTION---------------//
 function clearPage() {
-    $("section").children().remove();
+    document.body.innerHTML = '';
 
-    console.log('hello');
+    // body.innerHTML = ''.children().remove();
 }
-
-
