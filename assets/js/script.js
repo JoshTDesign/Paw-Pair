@@ -4,7 +4,6 @@
 
 //add global variables
 //var start = $('#startQuiz');
-var petsize = 2;
 
 const quizContainer = document.getElementById('quiz');
 const result = document.getElementById('result');
@@ -68,7 +67,22 @@ function setQuestion(number) {
     $('<button/>').attr('class', 'button my-2 is-primary is-outlined').attr('id', quizArray[number].response1[1]).text(quizArray[number].response1[0]).appendTo('#column');
     $('<button/>').attr('class', 'button my-2 is-primary is-outlined').attr('id', quizArray[number].response2[1]).text(quizArray[number].response2[0]).appendTo('#column');
 
-
+    //listens for clicks on buttons with id "big" - adds +1 to petSize
+    $('#big').on('click', function () {
+        petSize++
+    })
+    //listens for clicks on buttons with id "small" - takes -1 from petSize
+    $('#small').on('click', function () {
+        petSize--
+    })
+    //listens for clicks on buttons with id "active" - adds +1 to petActivity
+    $('#active').on('click', function () {
+        petActive++
+    })
+    //listens for clicks on buttons with id "notActive" - takes -1 from petActivity
+    $('#notActive').on('click', function () {
+        petActive--
+    })
 
 $('.button').on('click', function(){
 
@@ -105,52 +119,33 @@ function setResults() {
 
 //listens for clicks on buttons with id "dog" - adds +1 to petType
 
-document.getElementById('#dog').addEventListener('click', function () {
-    petType++
-})
-//listens for clicks on buttons with id "cat" - takes -1 from petType
-document.getElementById('#cat').addEventListener('click', function () {
-    petType--
-})
-//listens for clicks on buttons with id "big" - adds +1 to petSize
-document.getElementById('#big').addEventListener('click', function () {
-    petSize++
-})
-//listens for clicks on buttons with id "small" - takes -1 from petSize
-document.getElementById('#small').addEventListener('click', function () {
-    petSize--
-})
-//listens for clicks on buttons with id "active" - adds +1 to petActivity
-document.getElementById('#active').addEventListener('click', function () {
-    petActivity++
-})
-//listens for clicks on buttons with id "notActive" - takes -1 from petActivity
-document.getElementById('#notActive').addEventListener('click', function () {
-    petActivity--
-})
+// document.getElementById('#dog').addEventListener('click', function () {
+//     petType++
+// })
+// //listens for clicks on buttons with id "cat" - takes -1 from petType
+// document.getElementById('#cat').addEventListener('click', function () {
+//     petType--
+// })
+// //listens for clicks on buttons with id "big" - adds +1 to petSize
+// document.getElementById('#big').addEventListener('click', function () {
+//     petSize++
+// })
+// //listens for clicks on buttons with id "small" - takes -1 from petSize
+// document.getElementById('#small').addEventListener('click', function () {
+//     petSize--
+// })
+// //listens for clicks on buttons with id "active" - adds +1 to petActivity
+// document.getElementById('#active').addEventListener('click', function () {
+//     petActivity++
+// })
+// //listens for clicks on buttons with id "notActive" - takes -1 from petActivity
+// document.getElementById('#notActive').addEventListener('click', function () {
+//     petActivity--
+// })
 
-<<<<<<< HEAD
 
-=======
-document.getElementById('#dog').addEventListener('click', function () {
-    petType++
-})
-document.getElementById('#cat').addEventListener('click', function () {
-    petType--
-})
-document.getElementById('#big').addEventListener('click', function () {
-    petSize++
-})
-document.getElementById('#small').addEventListener('click', function () {
-    petSize--
-})
-document.getElementById('#active').addEventListener('click', function () {
-    petActivity++
-})
-document.getElementById('#notActive').addEventListener('click', function () {
-    petActivity--
-})
->>>>>>> 50117f509eeb3d02846ad2d81df560539f26a4ea
+
+
 
 
 
