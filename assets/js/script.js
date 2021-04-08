@@ -26,7 +26,7 @@ var quizArray = [
     { question: 'Are you a people person?', response1: ['I love a party', 'dog'], response2: ['My pet is my social life', 'notActive'] },
     { question: 'Are you a nontraditional thinker?', response1: ['I think outside of the box', 'small'], response2: ['No ... is that the right answer?', 'large'] },
     { question: 'Are you an outdoorsy person?', response1: ['Yes! Adventure awaits', 'active'], response2: ['Id rather relax at home', 'notActive'] },
-    { question: 'How do you live?', response1: ['big yard, space to run', 'big'], response2: ['Its a tiny box, but its my tiny box!', 'small'] },
+    { question: 'How do you live?', response1: ['big yard, space to run', 'big'], response2: ['Its a tiny box, but its my box!', 'small'] },
     { question: 'Are you easily stressed?', response1: ['Nah, nothing phases me', 'dog'], response2: ['This quiz is a bit much for me...', 'cat'] },
 ];
 
@@ -42,6 +42,9 @@ var quizArray = [
 $('#startQuiz').on('click', function () {
     startQuiz();
 });
+$('#savedPets').on('click', function () {
+    seeHistory();
+});
 
 
 //-----------------------STEP TWO -------------------------//
@@ -55,16 +58,20 @@ function startQuiz() {
     setQuestion(0);
 }
 
+function seeHistory() {
+    var savedPets = JSON.parse(localStorage.getItem('petToFetch'));
+}
+
 
 //----------------------STEP THREE------------------------//
 function setQuestion(number) {
     clearPage();
 
-    $('<div/>').attr('class', 'card p-5 is-vcentered hero is-dark is-fullheight is-flex-direction-column').attr('id', 'contain').appendTo(document.body);
-    $('<div/>').attr('id', 'column').attr('class', 'card-content column is-8 has-text-primary is-size-4').appendTo('#contain');
+    $('<div/>').attr('id', 'column').attr('class', 'image-header').appendTo('#container2');
     $('<h1/>').attr('id', 'question').attr('class', '').text(quizArray[number].question).appendTo('#column');
-    $('<button/>').attr('class', 'button my-2 is-primary is-outlined').attr('id', quizArray[number].response1[1]).text(quizArray[number].response1[0]).appendTo('#column');
-    $('<button/>').attr('class', 'button my-2 is-primary is-outlined').attr('id', quizArray[number].response2[1]).text(quizArray[number].response2[0]).appendTo('#column');
+    $('<button/>').attr('class', 'uk-button uk-button-default uk-text-lowercase uk-margin').attr('id', quizArray[number].response1[1]).text(quizArray[number].response1[0]).appendTo('#column');
+    $('<button/>').attr('class', 'uk-button uk-button-default uk-text-lowercase uk-margin').attr('id', quizArray[number].response2[1]).text(quizArray[number].response2[0]).appendTo('#column');
+
 
     //listens for clicks on buttons with id "big" - adds +1 to petSize
     $('#big').on('click', function () {
@@ -91,7 +98,7 @@ function setQuestion(number) {
         petType--
     })
 
-    $('.button').on('click', function () {
+    $('.uk-button').on('click', function () {
 
         console.log("Pet Size: " + petSize);
         console.log("Pet active: " + petActive);
@@ -108,16 +115,24 @@ function setQuestion(number) {
 }
 
 
-
+function history() {
+    var savedPets = JSON.parse(localStorage.getItem(petToFetch))
+    console.log('savedPets: ', JSON.parse(savedPets));
+};
 
 //----------------------STEP FOUR-------------------------//
 function setResults() {
     clearPage();
 
-    $('<div/>').attr('class', 'container box').attr('id', 'contain').appendTo(document.body);
-    $('<div/>').attr('class', 'container box').attr('id', 'test').appendTo(document.body);
-    $('<h1/>').attr('id', 'question').text('setResults Placeholder').appendTo('#test');
+    var petPic = "placeholder";//need link to api
+    var petName = "placeholder";//need link to api
+    var petBreed = "placeholder";//need link to api
+    var petAbout = "placeholder";//need link to api
 
+
+
+    // $('<div/>').attr('class', 'container box').attr('id', 'test').appendTo(document.body);
+    // $('<h1/>').attr('id', 'question').text('setResults Placeholder').appendTo('#test');
     if (petSize == 0 && petActive <= 1 && petType > 2) {
         var type = "dog";
         var breed = "bolognese"
@@ -173,6 +188,7 @@ function setResults() {
         return response.json()
     }).then(function (data) {
         console.log(data);
+
         fetch(petToFetch, {
             headers: { Authorization: `Bearer ${data.access_token}` }
         }).then(function (response) {
@@ -182,75 +198,63 @@ function setResults() {
             var petIndex = Math.floor(Math.random() * 20);
             var petPic = data.animals[petIndex].photos[0];
             var petName = data.animals[petIndex].name;
-            var petBreed1 = data.animals[petIndex].breeds.primary;
-            var petBreed2 = data.animals[petIndex].breeds.secondary;
-            var petGender = data.animals[petIndex].gender;
-            var petAge = data.animals[petIndex].age;
+            var petBreed = data.animals[petIndex].breeds.primary;
             var petAbout = data.animals[petIndex].description;
-            var petEmail = data.animals[petIndex].contact.email;
-            $('<img/>').attr('id', 'pic').attr('src', petPic.small).appendTo('#contain');
-            $('<h1/>').attr('id', 'name').text(petName).appendTo('#contain');
-            $('<h2/>').attr('id', 'breed1').text(petBreed1).appendTo('#contain');
-            $('<h2/>').attr('id', 'breed2').text(petBreed2).appendTo('#contain');
-            $('<p/>').attr('id', 'gender').text(petGender).appendTo('#contain');
-            $('<p/>').attr('id', 'age').text(petAge).appendTo('#contain');
-            $('<p/>').attr('id', 'about').text(petAbout).appendTo('#contain');
-            $('<p/>').attr('id', 'email').text(petEmail).appendTo('#contain');
-            console.log(data);
+
+
+            $('<div/>').attr('uk-height-viewport', 'expand: true').attr('class', 'uk-card uk-card-body uk-card-default uk-height-1-1 uk-margin-small').attr('id', 'card').appendTo('#container2');
+            $('<img/>').attr('id', 'pic').attr('class', 'uk-width-1-1 uk-width-1-2@m').attr('src', petPic.large).attr('height', '300px').appendTo('#card');
+            $('<h1/>').attr('id', 'name').attr('class', 'uk-text-muted margin-small').text(petName).appendTo('#card');
+            $('<span/>').attr('id', 'breed').attr('class', 'uk-badge uk-secondary').text('Breed: ' + petBreed).appendTo('#card');
+            $('<span/>').attr('id', 'activityLevel').attr('class', 'uk-badge uk-secondary').text('Activity Level: ' + petActive).appendTo('#card');
+
+            $('<p/>').attr('id', 'about').attr('class', 'uk-text-muted').text(petAbout).appendTo('#card');
+
+            $('<button/>').attr('id', 'playAgain').attr('class', 'uk-width-1-2 uk-width-1-4@m').text('Play again').appendTo('#container2');
+            // $('<button/>').attr('id', 'learnMore').attr('class', 'uk-width-1-2 uk-width-1-4@m').text('Learn more').appendTo('#container2');
+        
+            // $('#learnMore').on('click', function () {
+            //     clearPage();
+            //     // run function to get more info  about pet    
+            // })
+        
+            $('#playAgain').on('click', function () {
+                clearPage();
+                startQuiz();
+            })
+        
+        }).then(function() {
+
+            //add localStorage
+            var history = JSON.parse(localStorage.getItem('history')) || [];
+
+            var historyEntry = {
+                petPic: petPic,
+                petName: petName,
+                petBreed: petBreed,
+                petAbout: petAbout
+            }
+
+            //update hisotry
+            history.push(historyEntry);
+
+            localStorage.setItem('history', JSON.stringify(history))
+
         });
     });
-    $('<button/>').attr('id', 'learnMore').text('Learn more').appendTo('#contain');
-    $('<button/>').attr('id', 'playAgain').text('Play again').appendTo('#contain');
+    //$('<button/>').attr('id', 'learnMore').text('Learn more').appendTo('#container2');
 
-    $('#learnMore').on('click', function () {
-        clearPage();
-        // run function to get more info  about pet    
-    })
 
-    $('#playAgain').on('click', function () {
-        clearPage();
-        startQuiz();
-    })
+
 }
 
-
-//----------------------QUIZ TRACKING---------------//
-
-//listens for clicks on buttons with id "dog" - adds +1 to petType
-
-// document.getElementById('#dog').addEventListener('click', function () {
-//     petType++
-// })
-// //listens for clicks on buttons with id "cat" - takes -1 from petType
-// document.getElementById('#cat').addEventListener('click', function () {
-//     petType--
-// })
-// //listens for clicks on buttons with id "big" - adds +1 to petSize
-// document.getElementById('#big').addEventListener('click', function () {
-//     petSize++
-// })
-// //listens for clicks on buttons with id "small" - takes -1 from petSize
-// document.getElementById('#small').addEventListener('click', function () {
-//     petSize--
-// })
-// //listens for clicks on buttons with id "active" - adds +1 to petActivity
-// document.getElementById('#active').addEventListener('click', function () {
-//     petActivity++
-// })
-// //listens for clicks on buttons with id "notActive" - takes -1 from petActivity
-// document.getElementById('#notActive').addEventListener('click', function () {
-//     petActivity--
-// })
-
-
-
-
+function storedHistory() {
+    localStorage.setItem('petToFetch', JSON.stringify(petToFetch));
+}
 
 
 
 //----------------------CLEAR PAGE FUNCTION---------------//
 function clearPage() {
-    // document.body.innerHTML = '';
-
-    $('#contain').children().remove();
+    $('#container2').children().remove();
 }
