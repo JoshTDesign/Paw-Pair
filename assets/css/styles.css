@@ -42,9 +42,11 @@ html {
 
 #savedPets {
     border-radius: 10px;
-    border-color: #FEDB29 !important;
+    border-color: #FF7979 !important;
     border-width: 2px;
-    color:#FEDB29;
+    color:#FF7979 !important;
+
+    /* color:#FEDB29; */
     font-size: 115%;
 }
 
