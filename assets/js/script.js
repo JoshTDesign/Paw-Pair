@@ -228,6 +228,23 @@ function setResults() {
         
         }).then(function() {
             $('<button/>').attr('id', 'playAgain').attr('class', 'uk-width-1-2 uk-width-1-4@m').text('Play again').appendTo('#card');
+
+
+            //add localStorage
+            var history = JSON.parse(localStorage.getItem('history')) || [];
+
+            var historyEntry = {
+                petPic: petPic,
+                petName: petName,
+                petBreed: petBreed,
+                petAbout: petAbout
+            }
+
+            //update hisotry
+            history.push(historyEntry);
+
+            localStorage.setItem('history', JSON.stringify(history))
+
         });
     });
     //$('<button/>').attr('id', 'learnMore').text('Learn more').appendTo('#container2');
