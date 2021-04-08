@@ -116,6 +116,7 @@ function setResults() {
 
 
     $('<div/>').attr('class', 'container box').attr('id', 'contain').appendTo(document.body);
+
     $('<div/>').attr('class', 'container box').attr('id', 'test').appendTo(document.body);
     $('<h1/>').attr('id', 'question').text('setResults Placeholder').appendTo('#test');
     if (petSize == 0 && petActive <= 1 && petType > 2) {
