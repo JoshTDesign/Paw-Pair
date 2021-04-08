@@ -1,15 +1,9 @@
-
-
-
-
 //add global variables
 //var start = $('#startQuiz');
 
 const quizContainer = document.getElementById('quiz');
 const result = document.getElementById('result');
 const submitButton = document.getElementById('submit');
-
-
 
 //add global variables
 var start = document.querySelector("#startQuiz");
@@ -201,35 +195,43 @@ function setResults() {
             return response.json()
             //  show reults of fetch
         }).then(function (data) {
+            console.log(data);
             var petIndex = Math.floor(Math.random() * 20);
             var petPic = data.animals[petIndex].photos[0];
             var petName = data.animals[petIndex].name;
-            var petBreed = data.animals[petIndex].breeds.primary;
+            var petBreed1 = data.animals[petIndex].breeds.primary;
+            var petBreed2 = data.animals[petIndex].breeds.secondary;
+            var petAge = data.animals[petIndex].age;
+            var petGender = data.animals[petIndex].gender;
             var petAbout = data.animals[petIndex].description;
+            var petEmail = data.animals[petIndex].contact.email;
 
 
             $('<div/>').attr('uk-height-viewport', 'expand: true').attr('class', 'uk-card uk-card-body uk-card-default uk-height-1-1 uk-margin-small').attr('id', 'card').appendTo('#container2');
             $('<img/>').attr('id', 'pic').attr('class', 'uk-width-1-1 uk-width-1-2@m').attr('src', petPic.large).attr('height', '300px').appendTo('#card');
             $('<h1/>').attr('id', 'name').attr('class', 'uk-text-muted margin-small').text(petName).appendTo('#card');
-            $('<span/>').attr('id', 'breed').attr('class', 'uk-badge uk-secondary').text('Breed: ' + petBreed).appendTo('#card');
+            $('<span/>').attr('id', 'breed').attr('class', 'uk-badge uk-secondary').text('Breed: ' + petBreed1 + ' & ' + petBreed2).appendTo('#card');
+            $('<span/>').attr('id', 'gender').attr('class', 'uk-badge uk-secondary').text('Age: ' + petAge).appendTo('#card');
+            $('<span/>').attr('id', 'age').attr('class', 'uk-badge uk-secondary').text('Gender: ' + petGender).appendTo('#card');
             $('<span/>').attr('id', 'activityLevel').attr('class', 'uk-badge uk-secondary').text('Activity Level: ' + petActive).appendTo('#card');
 
             $('<p/>').attr('id', 'about').attr('class', 'uk-text-muted').text(petAbout).appendTo('#card');
+            $('<p/>').attr('id', 'email').attr('class', 'uk-text-muted').text('Interested? Send an email to ' + petEmail).appendTo('#card');
 
             $('<button/>').attr('id', 'playAgain').attr('class', 'uk-width-1-2 uk-width-1-4@m').text('Play again').appendTo('#container2');
             // $('<button/>').attr('id', 'learnMore').attr('class', 'uk-width-1-2 uk-width-1-4@m').text('Learn more').appendTo('#container2');
-        
+
             // $('#learnMore').on('click', function () {
             //     clearPage();
             //     // run function to get more info  about pet    
             // })
-        
+
             $('#playAgain').on('click', function () {
                 clearPage();
                 startQuiz();
             })
-        
-        }).then(function() {
+
+        }).then(function () {
 
             //add localStorage
             var history = JSON.parse(localStorage.getItem('history')) || [];
