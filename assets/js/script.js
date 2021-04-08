@@ -113,16 +113,97 @@ $('.button').on('click', function(){
 //----------------------STEP FOUR-------------------------//
 function setResults() {
     clearPage();
+
+
+    $('<div/>').attr('class', 'container box').attr('id', 'contain').appendTo(document.body);
     $('<div/>').attr('class', 'container box').attr('id', 'test').appendTo(document.body);
-    $('<h1/>').attr('id', 'question').text('setResults Placeholder').appendTo('#test');    
-//  run fetch()
-//  show results of fetch
-    // localStorage.setItem('results', JSON.stringify());
-    // renderMessage();
-}s
-// function renderMessage() {
-//     var lastResult = JSON.parse(localStorage.getItem('results'));
-// }
+    $('<h1/>').attr('id', 'question').text('setResults Placeholder').appendTo('#test');
+    if (petSize == 0 && petActive <= 1 && petType > 2) {
+        var type = "dog";
+        var breed = "bolognese"
+    } else if (petSize == 1 && petActive <= 1 && petType >= 2) {
+        var type = "dog";
+        var breed = "french bulldog"
+    } else if (petSize == 2 && petActive <= 1 && petType >= 2) {
+        var type = "dog";
+        var breed = "basset hound"
+    } else if (petSize == 3 && petActive <= 1 && petType >= 2) {
+        var type = "dog";
+        var breed = "tosa inu"
+    } else if (petSize == 4 && petActive <= 1 && petType >= 2) {
+        var type = "dog";
+        var breed = "boerboel"
+    } else if (petSize == 0 && petActive == 2 && petType >= 2) {
+        var type = "dog";
+        var breed = "chihuahua"
+    } else if (petSize == 1 && petActive == 2 && petType >= 2) {
+        var type = "dog";
+        var breed = "dachshund"
+    } else if (petSize == 2 && petActive == 2 && petType >= 2) {
+        var type = "dog";
+        var breed = "american bulldog"
+    } else if (petSize == 3 && petActive == 2 && petType >= 2) {
+        var type = "dog";
+        var breed = "german shepard dog"
+    } else if (petSize == 4 && petActive == 2 && petType >= 2) {
+        var type = "dog";
+        var breed = "mastiff"
+    } else if (petSize == 0 && petActive > 2 && petType >= 2) {
+        var type = "dog";
+        var breed = "toy fox terrier"
+    } else if (petSize == 1 && petActive > 2 && petType >= 2) {
+        var type = "dog";
+        var breed = "beagle"
+    } else if (petSize == 2 && petActive > 2 && petType >= 2) {
+        var type = "dog";
+        var breed = "border collie"
+    } else if (petSize == 3 && petActive > 2 && petType >= 2) {
+        var type = "dog";
+        var breed = "golden retriever"
+    } else if (petSize == 4 && petActive > 2 && petType >= 2) {
+        var type = "dog";
+        var breed = "great dane"
+    } else {
+        var type = "cat";
+        var breed = "domestic short hair";
+    }
+    var petToFetch = `https://api.petfinder.com/v2/animals?type=${type}&breed=${breed}`
+    //  run fetch()
+    fetch("https://api.petfinder.com/v2/oauth2/token", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ grant_type: "client_credentials", client_id: "HEGMAK8rmrTdGMxSLLuVTpwt1pAwGMYtsMlYO8XCERMTLT7CAY", client_secret: "CfhtSPVPSW0YKpFQvIHmdDYtBzEWHkFaVmr2nlAe" }) }).then(function (response) {
+        return response.json()
+    }).then(function (data) {
+        console.log(data);
+        fetch(petToFetch, {
+            headers: { Authorization: `Bearer ${data.access_token}` }
+        }).then(function (response) {
+            return response.json()
+            //  show reults of fetch
+        }).then(function (data) {
+            var petIndex = Math.floor(Math.random() * 20);  
+                var petPic = data.animals[petIndex].photos[0];
+                var petName = data.animals[petIndex].name;
+                var petBreed = data.animals[petIndex].breeds.primary;
+                var petAbout = data.animals[petIndex].description;
+            $('<img/>').attr('id', 'pic').attr('src', petPic.small).appendTo('#contain');
+            $('<h1/>').attr('id', 'name').text(petName).appendTo('#contain');
+            $('<h2/>').attr('id', 'breed').text(petBreed).appendTo('#contain');
+            $('<p/>').attr('id', 'about').text(petAbout).appendTo('#contain');
+            console.log(data);
+        });
+    });
+    $('<button/>').attr('id', 'learnMore').text('Learn more').appendTo('#contain');
+    $('<button/>').attr('id', 'playAgain').text('Play again').appendTo('#contain');
+
+    $('#learnMore').on('click', function () {
+        clearPage();
+        // run function to get more info  about pet    
+    })
+
+    $('#playAgain').on('click', function () {
+        clearPage();
+        startQuiz();
+    })
+}
 
 
 //----------------------QUIZ TRACKING---------------//
@@ -158,6 +239,5 @@ function setResults() {
 //----------------------CLEAR PAGE FUNCTION---------------//
 function clearPage() {
     document.body.innerHTML = '';
-
     // body.innerHTML = ''.children().remove();
 };
