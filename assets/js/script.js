@@ -151,10 +151,10 @@ function history() {
 function setResults() {
     clearPage();
 
-    var petPic = "placeholder";//need link to api
-    var petName = "placeholder";//need link to api
-    var petBreed = "placeholder";//need link to api
-    var petAbout = "placeholder";//need link to api
+    var placeholderPetPic = "placeholder";//need link to api
+    var placeholderPetName = "placeholder";//need link to api
+    var placeholderPetBreed = "placeholder";//need link to api
+    var placeholderPetAbout = "placeholder";//need link to api
 
 
 
@@ -214,6 +214,7 @@ function setResults() {
     fetch("https://api.petfinder.com/v2/oauth2/token", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ grant_type: "client_credentials", client_id: "HEGMAK8rmrTdGMxSLLuVTpwt1pAwGMYtsMlYO8XCERMTLT7CAY", client_secret: "CfhtSPVPSW0YKpFQvIHmdDYtBzEWHkFaVmr2nlAe" }) }).then(function (response) {
         return response.json()
     }).then(function (data) {
+
         console.log(data);
 
 
@@ -226,6 +227,7 @@ function setResults() {
             console.log(data);
             var petIndex = Math.floor(Math.random() * 20);
             console.log(petIndex);
+
             var petPic = data.animals[petIndex].photos[0];
 
             var petName = data.animals[petIndex].name;
@@ -272,22 +274,13 @@ function setResults() {
             //     clearPage();
             //     // run function to get more info  about pet    
             // })
-
-            $('#playAgain').on('click', function () {
-                clearPage();
-                startQuiz();
-            })
-
-
-        }).then(function () {
-
-            //add localStorage
             var history = JSON.parse(localStorage.getItem('history')) || [];
 
             var historyEntry = {
                 petPic: petPic,
                 petName: petName,
-                petBreed: petBreed,
+                petBreed1: petBreed1,
+                petBreed2: petBreed2,
                 petAbout: petAbout
             }
 
@@ -295,8 +288,31 @@ function setResults() {
             history.push(historyEntry);
 
             localStorage.setItem('history', JSON.stringify(history))
+            $('#playAgain').on('click', function () {
+                clearPage();
+                startQuiz();
+            })
 
-        });
+
+        })
+        // .then(function () {
+
+        //     //add localStorage
+        //     var history = JSON.parse(localStorage.getItem('history')) || [];
+
+        //     var historyEntry = {
+        //         petPic: petPic,
+        //         petName: petName,
+        //         petBreed: petBreed,
+        //         petAbout: petAbout
+        //     }
+
+        //     //update hisotry
+        //     history.push(historyEntry);
+
+        //     localStorage.setItem('history', JSON.stringify(history))
+
+        // });
     });
     //$('<button/>').attr('id', 'learnMore').text('Learn more').appendTo('#container2');
 
@@ -304,9 +320,9 @@ function setResults() {
 
 }
 
-function storedHistory() {
-    localStorage.setItem('petToFetch', JSON.stringify(petToFetch));
-}
+// function storedHistory() {
+//     localStorage.setItem('petToFetch', JSON.stringify(petToFetch));
+// }
 
 
 
