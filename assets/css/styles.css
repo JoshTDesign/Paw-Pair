@@ -12,9 +12,10 @@ html {
 #container2 {
     border-radius: 20px;
     /* background-color: #34393E; */
+
     background-image: url('https://drive.google.com/uc?id=17KcHtU3LGiLWby_8jNlDkNbdKQfEEeU5&authuser=josh%40joshtaylordesign.com&usp=drive_fs') !important;
     /* height: 500px; You must set a specified height */
-    background-position: center; /* Center the image */
+    background-position: bottom; /* Center the image */
     background-repeat: no-repeat; /* Do not repeat the image */
     background-size: cover; 
     box-shadow: 5px, 5px, 20px, 50;
@@ -27,7 +28,7 @@ html {
 }
 
 .image-header {
-    background-image: url("https://drive.google.com/file/d/17NbSJdatzDNrG7HcAgj01NmE54Ip2VRT/uc?usp=sharing" alt="Paw Pair");
+    background-image: url("/assets/images/pawPair_logo.svg" alt="Paw Pair");
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Do not repeat the image */
     }
@@ -62,7 +63,8 @@ button {
     border-color: #FEDB29 !important;
     border-width: 2px !important;
     color:#FEDB29 !important;
-    font-size: 115% !important;
+    font-size: 150% !important;
+    height: 250px;
 }
 
 #playAgain {
@@ -85,12 +87,16 @@ p {
     font-size: 80%;
 }
 
-img {
+.uk-card-default img {
     border-radius: 10px;
     width: 100vw; 
     height: 40vh; 
     object-fit: cover;
 }
+
+#layer_1 {
+    width: 50vw !important;
+    }
 
 .uk-badge {
     font-family: 'quicksand', sans-serif !important;
@@ -101,3 +107,7 @@ img {
 .uk-card-body h1 {
     margin-bottom: 2;
 }
+
+.st0{fill:#65C3A1;}
+.st1{fill:#C5494A;}
+.st2{fill:none;stroke:#F37879;stroke-width:2;stroke-miterlimit:10;}
