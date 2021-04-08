@@ -194,6 +194,7 @@ function setResults() {
         return response.json()
     }).then(function (data) {
         console.log(data);
+    
 
         fetch(petToFetch, {
             headers: { Authorization: `Bearer ${data.access_token}` }
@@ -203,6 +204,7 @@ function setResults() {
         }).then(function (data) {
             console.log(data);
             var petIndex = Math.floor(Math.random() * 20);
+            console.log(petIndex);
             var petPic = data.animals[petIndex].photos[0];
             var petName = data.animals[petIndex].name;
             var petBreed1 = data.animals[petIndex].breeds.primary;
@@ -214,6 +216,18 @@ function setResults() {
             var petAbout = data.animals[petIndex].description;
             var petEmail = data.animals[petIndex].contact.email;
 
+            function noImage() {
+                var img = $('<img />');
+                if (photos.length <= 0) return {
+                    $("#img").attr("src","https://www.nomadfoods.com/wp-content/uploads/2018/08/placeholder-1-e1533569576673.png");
+                }
+   
+    
+            var imgs = document.getElementsByTagName("img");
+            for (var i = 0; i < imgs.length; i++) {
+                imgs[i].onerror=imgError(imgs[i]);
+            }
+            
 
             $('<div/>').attr('uk-height-viewport', 'expand: true').attr('class', 'uk-card uk-card-body uk-card-default uk-height-1-1 uk-margin-small').attr('id', 'card').appendTo('#container2');
             $('<img/>').attr('id', 'pic').attr('class', 'uk-width-1-1 uk-width-1-2@m').attr('src', petPic.large).attr('height', '300px').appendTo('#card');
@@ -227,10 +241,8 @@ function setResults() {
             $('<span/>').attr('id', 'age').attr('class', 'uk-badge uk-secondary').text('Gender: ' + petGender).appendTo('#card');
             $('<span/>').attr('id', 'location').attr('class', 'uk-badge uk-secondary').text('Location: ' + petCity + ', ' + petState).appendTo('#card');
             $('<span/>').attr('id', 'activityLevel').attr('class', 'uk-badge uk-secondary').text('Activity Level: ' + petActive).appendTo('#card');
-
             $('<p/>').attr('id', 'about').attr('class', 'uk-text-muted').text(petAbout).appendTo('#card');
             $('<p/>').attr('id', 'email').attr('class', 'uk-text-muted').text('Interested? Send an email to ' + petEmail).appendTo('#card');
-
             $('<button/>').attr('id', 'playAgain').attr('class', 'uk-width-1-2 uk-width-1-4@m').text('Play again').appendTo('#container2');
             // $('<button/>').attr('id', 'learnMore').attr('class', 'uk-width-1-2 uk-width-1-4@m').text('Learn more').appendTo('#container2');
 
@@ -243,6 +255,7 @@ function setResults() {
                 clearPage();
                 startQuiz();
             })
+
 
         }).then(function () {
 
