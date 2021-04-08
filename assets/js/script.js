@@ -16,6 +16,8 @@ var breed = "";
 
 //var searchUrl;
 var petToFetch = `https://api.petfinder.com/v2/animals?type=${type}&breed=${breed}`
+var dogurlToFetch = `https://boiling-meadow-47923.herokuapp.com/https://dog-facts-api.herokuapp.com/api/v1/resources/dogs?number=1`
+var caturlToFetch = `https://meowfacts.herokuapp.com/`
 
 //test url
 //var petToFetch = `https://api.petfinder.com/v2/animals?type=dog&breed=pug`;
@@ -71,7 +73,7 @@ function setQuestion(number) {
     $('<h1/>').attr('id', 'question').attr('class', 'uk-text-center').text(quizArray[number].question).appendTo('#column');
     $('<button/>').attr('class', 'uk-button uk-button-default uk-align-center uk-text-lowercase uk-margin uk-width-1-2@m').attr('id', quizArray[number].response1[1]).text(quizArray[number].response1[0]).appendTo('#column');
     $('<button/>').attr('class', 'uk-button uk-button-default uk-align-center uk-text-lowercase uk-margin uk-width-1-2@m').attr('id', quizArray[number].response2[1]).text(quizArray[number].response2[0]).appendTo('#column');
-
+    randomFacts();
 
     //listens for clicks on buttons with id "big" - adds +1 to petSize
     $('#big').on('click', function () {
@@ -120,6 +122,25 @@ function setQuestion(number) {
     })
 }
 
+function randomFacts() {
+    var factNum = Math.floor(Math.random() * 11);
+    console.log(factNum);
+    if (factNum > 5) {
+        fetch(dogurlToFetch).then(function (response) {
+            return response.json()
+        }).then(function (data) {
+            console.log(data);
+            $('<p/>').attr('id', 'dogFacts').attr('class', 'uk-text-muted uk-width-2-3 uk-width-1-4@m  uk-align-center').text('Did you know? ' + data[0].fact).appendTo('#container2');
+        });
+    } else {
+        fetch(caturlToFetch).then(function (response) {
+            return response.json()
+        }).then(function (data) {
+            console.log(data);
+            $('<p/>').attr('id', 'catFacts').attr('class', 'uk-text-muted uk-width-2-3 uk-width-1-4@m  uk-align-center').text('Did you know? ' + data.data[0]).appendTo('#container2');
+        });
+    }
+}
 
 function history() {
     var savedPets = JSON.parse(localStorage.getItem(petToFetch))
@@ -194,7 +215,7 @@ function setResults() {
         return response.json()
     }).then(function (data) {
         console.log(data);
-    
+
 
         fetch(petToFetch, {
             headers: { Authorization: `Bearer ${data.access_token}` }
@@ -216,18 +237,18 @@ function setResults() {
             var petAbout = data.animals[petIndex].description;
             var petEmail = data.animals[petIndex].contact.email;
 
-            function noImage() {
+            /*function noImage() {
                 var img = $('<img />');
                 if (data.animals[petIndex].photos.length <= 0) return {
                     ${img src = "https://www.nomadfoods.com/wp-content/uploads/2018/08/placeholder-1-e1533569576673.png">};
-                }
-   
-    
+            }*/
+
+
             var imgs = document.getElementsByTagName("img");
             for (var i = 0; i < imgs.length; i++) {
-                imgs[i].onerror=imgError(imgs[i]);
+                imgs[i].onerror = imgError(imgs[i]);
             }
-            
+
 
             $('<div/>').attr('uk-height-viewport', 'expand: true').attr('class', 'uk-card uk-card-body uk-card-default uk-height-1-1 uk-margin-small').attr('id', 'card').appendTo('#container2');
             $('<img/>').attr('id', 'pic').attr('class', 'uk-width-1-1 uk-width-1-2@m').attr('src', petPic.large).attr('height', '300px').appendTo('#card');
