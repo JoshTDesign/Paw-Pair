@@ -206,6 +206,7 @@ function setResults() {
             var petIndex = Math.floor(Math.random() * 20);
             console.log(petIndex);
             var petPic = data.animals[petIndex].photos[0];
+
             var petName = data.animals[petIndex].name;
             var petBreed1 = data.animals[petIndex].breeds.primary;
             var petBreed2 = data.animals[petIndex].breeds.secondary;
@@ -216,11 +217,17 @@ function setResults() {
             var petAbout = data.animals[petIndex].description;
             var petEmail = data.animals[petIndex].contact.email;
 
-            function noImage() {
-                var img = $('<img />');
-                if (data.animals[petIndex].photos.length <= 0) return {
-                    ${img src = "https://www.nomadfoods.com/wp-content/uploads/2018/08/placeholder-1-e1533569576673.png">};
-                }
+            
+
+                
+
+            // function noImage() {
+            //     var img = $('<img />');
+            //     if (data.animals[petIndex].photos.length <= 0) return {
+            //         ${img src = "https://www.nomadfoods.com/wp-content/uploads/2018/08/placeholder-1-e1533569576673.png">};
+            //     console.log(return);
+            //     }
+                
    
     
             var imgs = document.getElementsByTagName("img");
@@ -230,8 +237,13 @@ function setResults() {
             
 
             $('<div/>').attr('uk-height-viewport', 'expand: true').attr('class', 'uk-card uk-card-body uk-card-default uk-height-1-1 uk-margin-small').attr('id', 'card').appendTo('#container2');
-            $('<img/>').attr('id', 'pic').attr('class', 'uk-width-1-1 uk-width-1-2@m').attr('src', petPic.large).attr('height', '300px').appendTo('#card');
-            $('<h1/>').attr('id', 'name').attr('class', 'uk-text-muted margin-small').text(petName).appendTo('#card');
+            if (petPic === undefined){
+                petPic = './assets/images/pawPair_noPic.png';
+                $('<img/>').attr('id', 'pic').attr('class', 'uk-width-1-1 uk-width-1-2@m').attr('src', petPic).attr('height', '300px').attr('width', '200px').appendTo('#card');
+            } else {
+                $('<img/>').attr('id', 'pic').attr('class', 'uk-width-1-1 uk-width-1-2@m').attr('src', petPic.large).attr('height', '300px').appendTo('#card');
+            }
+                $('<h1/>').attr('id', 'name').attr('class', 'uk-text-muted margin-small').text(petName).appendTo('#card');
             if (petBreed2 === null) {
                 $('<span/>').attr('id', 'breed').attr('class', 'uk-badge uk-secondary').text('Breed: ' + petBreed1).appendTo('#card');
             } else {
