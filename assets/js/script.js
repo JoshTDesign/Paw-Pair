@@ -14,26 +14,21 @@ const submitButton = document.getElementById('submit');
 //add global variables
 var start = document.querySelector("#startQuiz");
 var petSize = 2;
+
 var petActive = 2;
 var petType = 2;
 var questionNumber;
-var type = "";
-var breed = "";
 
 //var searchUrl;
-var petToFetch = `https://api.petfinder.com/v2/animals?type=${type}&breed=${breed}`
-
-//test url
-//var petToFetch = `https://api.petfinder.com/v2/animals?type=dog&breed=pug`;
 
 
 //quiz array
 var quizArray = [
-    { question: 'Are you a people person?', response1: ['I love a party', 'dog'], response2: ['My pet is my social life', 'notActive'] },
-    { question: 'Are you a nontraditional thinker?', response1: ['I think outside of the box', 'small'], response2: ['No ... is that the right answer?', 'large'] },
-    { question: 'Are you an outdoorsy person?', response1: ['Yes! Adventure awaits', 'active'], response2: ['Id rather relax at home', 'notActive'] },
-    { question: 'How do you live?', response1: ['big yard, space to run', 'big'], response2: ['Its a tiny box, but its my tiny box!', 'small'] },
-    { question: 'Are you easily stressed?', response1: ['Nah, nothing phases me', 'dog'], response2: ['This quiz is a bit much for me...', 'cat'] },
+    { question: 'Are you a people person?', response1: ['I love a party', 'dog'], response2: ['My pet is my social life', 'notActive']},
+    { question: 'Are you a nontraditional thinker?', response1: ['I think outside of the box', 'small'], response2: ['No ... is that the right answer?', 'large']},
+    { question: 'Are you an outdoorsy person?', response1: ['Yes! Adventure awaits', 'active'], response2: ['Id rather relax at home', 'notActive']},
+    { question: 'How do you live?', response1: ['big yard, space to run', 'big'], response2: ['Its a tiny box, but its my tiny box!', 'small']},
+    { question: 'Are you easily stressed?', response1: ['Nah, nothing phases me', 'dog'], response2: ['This quiz is a bit much for me...', 'cat']},
 ];
 
 //Are you a people person - size (1) dog (2) active (2)
@@ -66,12 +61,21 @@ function startQuiz() {
 function setQuestion(number) {
     clearPage();
 
-    $('<div/>').attr('class', 'card p-5 is-vcentered hero is-dark is-fullheight is-flex-direction-column').attr('id', 'contain').appendTo(document.body);
-    $('<div/>').attr('id', 'column').attr('class', 'card-content column is-8 has-text-primary is-size-4').appendTo('#contain');
+    $('<div/>').attr('class', 'hero p-5 is-vcentered').attr('id', 'contain').appendTo(document.body);
+    $('<div/>').attr('id', 'column').attr('class', 'column is-8 has-text-primary is-size-4').appendTo('#contain');
     $('<h1/>').attr('id', 'question').attr('class', '').text(quizArray[number].question).appendTo('#column');
     $('<button/>').attr('class', 'button my-2 is-primary is-outlined').attr('id', quizArray[number].response1[1]).text(quizArray[number].response1[0]).appendTo('#column');
     $('<button/>').attr('class', 'button my-2 is-primary is-outlined').attr('id', quizArray[number].response2[1]).text(quizArray[number].response2[0]).appendTo('#column');
 
+
+    // listens for clicks on buttons with id "dog" - adds +1 to petType
+    $('#dog').on('click', function () {
+    petType++
+    })
+//listens for clicks on buttons with id "cat" - takes -1 from petType
+    $('#cat').on('click', function () {
+    petType--
+    })
     //listens for clicks on buttons with id "big" - adds +1 to petSize
     $('#big').on('click', function () {
         petSize++
@@ -88,20 +92,12 @@ function setQuestion(number) {
     $('#notActive').on('click', function () {
         petActive--
     })
-    //listens for clicks on buttons with id "dog" - takes +1 from petType
-    $('#dog').on('click', function () {
-        petType++
-    })
-    //listens for clicks on buttons with id "cat" - takes -1 from petType
-    $('#cat').on('click', function () {
-        petType--
-    })
 
-    $('.button').on('click', function () {
+$('.button').on('click', function(){
 
-        console.log("Pet Size: " + petSize);
-        console.log("Pet active: " + petActive);
-        console.log("Pet type: " + petType);
+        console.log(petSize);
+        console.log(petActive);
+        console.log(petType);
 
         questionNumber++;
         clearPage();
@@ -114,16 +110,12 @@ function setQuestion(number) {
 }
 
 
-
-
 //----------------------STEP FOUR-------------------------//
 function setResults() {
     clearPage();
 
 
     $('<div/>').attr('class', 'container box').attr('id', 'contain').appendTo(document.body);
-
-
 
     $('<div/>').attr('class', 'container box').attr('id', 'test').appendTo(document.body);
     $('<h1/>').attr('id', 'question').text('setResults Placeholder').appendTo('#test');
@@ -245,13 +237,8 @@ function setResults() {
 
 
 
-
-
-
-
 //----------------------CLEAR PAGE FUNCTION---------------//
 function clearPage() {
-    // document.body.innerHTML = '';
-
-    $('#contain').children().remove();
-}
+    document.body.innerHTML = '';
+    // body.innerHTML = ''.children().remove();
+};
