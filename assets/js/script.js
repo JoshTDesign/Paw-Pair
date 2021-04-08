@@ -210,17 +210,19 @@ function setResults() {
             var petBreed = data.animals[petIndex].breeds.primary;
             var petAbout = data.animals[petIndex].description;
 
-            function imgError(img) {
-                img.onerror = "";
-                img.src = "https://www.nomadfoods.com/wp-content/uploads/2018/08/placeholder-1-e1533569576673.png";
-                return true;
-            }
+            function noImage() {
+                var img = $('<img />');
+                if (photos.length <= 0) return {
+                    $("#img").attr("src","https://www.nomadfoods.com/wp-content/uploads/2018/08/placeholder-1-e1533569576673.png");
+                }
+   
     
             var imgs = document.getElementsByTagName("img");
             for (var i = 0; i < imgs.length; i++) {
                 imgs[i].onerror=imgError(imgs[i]);
             }
             
+
             $('<div/>').attr('uk-height-viewport', 'expand: true').attr('class', 'uk-card uk-card-body uk-card-default uk-height-1-1 uk-margin-small').attr('id', 'card').appendTo('#container2');
             $('<img/>').attr('id', 'pic').attr('class', 'uk-width-1-1 uk-width-1-2@m').attr('src', petPic.large).attr('height', '300px').appendTo('#card');
             $('<h1/>').attr('id', 'name').attr('class', 'uk-text-muted margin-small').text(petName).appendTo('#card');
