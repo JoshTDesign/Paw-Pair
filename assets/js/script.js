@@ -73,10 +73,10 @@ function seeHistory() {
 function setQuestion(number) {
     clearPage();
 
-    $('<div/>').attr('id', 'column').attr('class', 'image-header').appendTo('#container2');
+    $('<div/>').attr('id', 'column').attr('class', 'image-header uk-flex uk-flex-column uk-flex-center@m').appendTo('#container2');
     $('<h1/>').attr('id', 'question').attr('class', '').text(quizArray[number].question).appendTo('#column');
-    $('<button/>').attr('class', 'uk-button uk-button-default uk-text-lowercase uk-margin').attr('id', quizArray[number].response1[1]).text(quizArray[number].response1[0]).appendTo('#column');
-    $('<button/>').attr('class', 'uk-button uk-button-default uk-text-lowercase uk-margin').attr('id', quizArray[number].response2[1]).text(quizArray[number].response2[0]).appendTo('#column');
+    $('<button/>').attr('class', 'uk-button uk-button-default uk-text-lowercase uk-margin uk-width-1-2@m').attr('id', quizArray[number].response1[1]).text(quizArray[number].response1[0]).appendTo('#column');
+    $('<button/>').attr('class', 'uk-button uk-button-default uk-text-lowercase uk-margin uk-width-1-2@m').attr('id', quizArray[number].response2[1]).text(quizArray[number].response2[0]).appendTo('#column');
 
 
     //listens for clicks on buttons with id "big" - adds +1 to petSize
