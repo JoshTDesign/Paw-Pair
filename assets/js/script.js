@@ -194,6 +194,7 @@ function setResults() {
         return response.json()
     }).then(function (data) {
         console.log(data);
+
         fetch(petToFetch, {
             headers: { Authorization: `Bearer ${data.access_token}` }
         }).then(function (response) {
@@ -215,11 +216,13 @@ function setResults() {
 
             $('<p/>').attr('id', 'about').attr('class', 'uk-text-muted').text(petAbout).appendTo('#card');
 
+            $('<button/>').attr('id', 'playAgain').attr('class', 'uk-width-1-2 uk-width-1-4@m').text('Play again').appendTo('#container2');
+            // $('<button/>').attr('id', 'learnMore').attr('class', 'uk-width-1-2 uk-width-1-4@m').text('Learn more').appendTo('#container2');
         
-            $('#learnMore').on('click', function () {
-                clearPage();
-                // run function to get more info  about pet    
-            })
+            // $('#learnMore').on('click', function () {
+            //     clearPage();
+            //     // run function to get more info  about pet    
+            // })
         
             $('#playAgain').on('click', function () {
                 clearPage();
@@ -227,8 +230,6 @@ function setResults() {
             })
         
         }).then(function() {
-            $('<button/>').attr('id', 'playAgain').attr('class', 'uk-width-1-2 uk-width-1-4@m').text('Play again').appendTo('#card');
-
 
             //add localStorage
             var history = JSON.parse(localStorage.getItem('history')) || [];
@@ -249,15 +250,8 @@ function setResults() {
     });
     //$('<button/>').attr('id', 'learnMore').text('Learn more').appendTo('#container2');
 
-    $('#learnMore').on('click', function () {
-        clearPage();
-        // run function to get more info  about pet    
-    })
 
-    $('#playAgain').on('click', function () {
-        clearPage();
-        startQuiz();
-    })
+
 }
 
 function storedHistory() {
