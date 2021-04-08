@@ -218,8 +218,8 @@ function setResults() {
 
             function noImage() {
                 var img = $('<img />');
-                if (photos.length <= 0) return {
-                    $("#img").attr("src","https://www.nomadfoods.com/wp-content/uploads/2018/08/placeholder-1-e1533569576673.png");
+                if (data.animals[petIndex].photos.length <= 0) return {
+                    ${img src = "https://www.nomadfoods.com/wp-content/uploads/2018/08/placeholder-1-e1533569576673.png">};
                 }
    
     
