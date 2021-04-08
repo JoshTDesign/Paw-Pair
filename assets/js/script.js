@@ -1,15 +1,9 @@
-
-
-
-
 //add global variables
 //var start = $('#startQuiz');
 
 const quizContainer = document.getElementById('quiz');
 const result = document.getElementById('result');
 const submitButton = document.getElementById('submit');
-
-
 
 //add global variables
 var start = document.querySelector("#startQuiz");
@@ -120,13 +114,10 @@ function setQuestion(number) {
 function setResults() {
     clearPage();
 
-
     $('<div/>').attr('class', 'container box').attr('id', 'contain').appendTo(document.body);
-
-
-
     $('<div/>').attr('class', 'container box').attr('id', 'test').appendTo(document.body);
     $('<h1/>').attr('id', 'question').text('setResults Placeholder').appendTo('#test');
+
     if (petSize == 0 && petActive <= 1 && petType > 2) {
         var type = "dog";
         var breed = "bolognese"
@@ -188,14 +179,16 @@ function setResults() {
             return response.json()
             //  show reults of fetch
         }).then(function (data) {
-            var petIndex = Math.floor(Math.random() * 20);  
-                var petPic = data.animals[petIndex].photos[0];
-                var petName = data.animals[petIndex].name;
-                var petBreed = data.animals[petIndex].breeds.primary;
-                var petAbout = data.animals[petIndex].description;
+            var petIndex = Math.floor(Math.random() * 20);
+            var petPic = data.animals[petIndex].photos[0];
+            var petName = data.animals[petIndex].name;
+            var petBreed1 = data.animals[petIndex].breeds.primary;
+            var petBreed2 = data.animals[petIndex].breeds.secondary;
+            var petAbout = data.animals[petIndex].description;
             $('<img/>').attr('id', 'pic').attr('src', petPic.small).appendTo('#contain');
             $('<h1/>').attr('id', 'name').text(petName).appendTo('#contain');
-            $('<h2/>').attr('id', 'breed').text(petBreed).appendTo('#contain');
+            $('<h2/>').attr('id', 'breed').text(petBreed1).appendTo('#contain');
+            $('<h2/>').attr('id', 'breed').text(petBreed2).appendTo('#contain');
             $('<p/>').attr('id', 'about').text(petAbout).appendTo('#contain');
             console.log(data);
         });
