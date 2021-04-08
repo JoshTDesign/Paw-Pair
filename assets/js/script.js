@@ -194,6 +194,7 @@ function setResults() {
         return response.json()
     }).then(function (data) {
         console.log(data);
+    
 
         fetch(petToFetch, {
             headers: { Authorization: `Bearer ${data.access_token}` }
@@ -201,21 +202,31 @@ function setResults() {
             return response.json()
             //  show reults of fetch
         }).then(function (data) {
+            console.log(data);
             var petIndex = Math.floor(Math.random() * 20);
+            console.log(petIndex);
             var petPic = data.animals[petIndex].photos[0];
             var petName = data.animals[petIndex].name;
             var petBreed = data.animals[petIndex].breeds.primary;
             var petAbout = data.animals[petIndex].description;
 
-
+            function imgError(img) {
+                img.onerror = "";
+                img.src = "https://www.nomadfoods.com/wp-content/uploads/2018/08/placeholder-1-e1533569576673.png";
+                return true;
+            }
+    
+            var imgs = document.getElementsByTagName("img");
+            for (var i = 0; i < imgs.length; i++) {
+                imgs[i].onerror=imgError(imgs[i]);
+            }
+            
             $('<div/>').attr('uk-height-viewport', 'expand: true').attr('class', 'uk-card uk-card-body uk-card-default uk-height-1-1 uk-margin-small').attr('id', 'card').appendTo('#container2');
             $('<img/>').attr('id', 'pic').attr('class', 'uk-width-1-1 uk-width-1-2@m').attr('src', petPic.large).attr('height', '300px').appendTo('#card');
             $('<h1/>').attr('id', 'name').attr('class', 'uk-text-muted margin-small').text(petName).appendTo('#card');
             $('<span/>').attr('id', 'breed').attr('class', 'uk-badge uk-secondary').text('Breed: ' + petBreed).appendTo('#card');
             $('<span/>').attr('id', 'activityLevel').attr('class', 'uk-badge uk-secondary').text('Activity Level: ' + petActive).appendTo('#card');
-
             $('<p/>').attr('id', 'about').attr('class', 'uk-text-muted').text(petAbout).appendTo('#card');
-
             $('<button/>').attr('id', 'playAgain').attr('class', 'uk-width-1-2 uk-width-1-4@m').text('Play again').appendTo('#container2');
             // $('<button/>').attr('id', 'learnMore').attr('class', 'uk-width-1-2 uk-width-1-4@m').text('Learn more').appendTo('#container2');
         
@@ -228,6 +239,7 @@ function setResults() {
                 clearPage();
                 startQuiz();
             })
+
         
         }).then(function() {
 

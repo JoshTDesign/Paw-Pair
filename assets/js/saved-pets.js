@@ -9,7 +9,7 @@ $(document).ready(function() {
         petStr += `
             <div>
                 <h1>${pet.petName}</h1>
-                <img src="${pet.petPic.medium}">
+                <img src="${pet.petPic.large}">
                 <div>Breed: ${pet.petBreed}</div>
                 <p>${pet.petAbout}</p>
             </div>
