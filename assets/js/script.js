@@ -230,6 +230,21 @@ function setResults() {
             $('<h2/>').attr('id', 'breed').text(petBreed).appendTo('#contain');
             $('<p/>').attr('id', 'about').text(petAbout).appendTo('#contain');
             console.log(data);
+
+            //add localStorage
+            var history = JSON.parse(localStorage.getItem('history')) || [];
+
+            var historyEntry = {
+                petPic: petPic,
+                petName: petName,
+                petBreed: petBreed,
+                petAbout: petAbout
+            }
+
+            //update hisotry
+            history.push(historyEntry);
+
+            localStorage.setItem('history', JSON.stringify(history))
         });
     });
     $('<button/>').attr('id', 'learnMore').text('Learn more').appendTo('#contain');
