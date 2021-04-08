@@ -237,12 +237,6 @@ function setResults() {
             var petAbout = data.animals[petIndex].description;
             var petEmail = data.animals[petIndex].contact.email;
 
-            /*function noImage() {
-                var img = $('<img />');
-                if (data.animals[petIndex].photos.length <= 0) return {
-                    ${img src = "https://www.nomadfoods.com/wp-content/uploads/2018/08/placeholder-1-e1533569576673.png">};
-            }*/
-
 
             var imgs = document.getElementsByTagName("img");
             for (var i = 0; i < imgs.length; i++) {
