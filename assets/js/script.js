@@ -32,7 +32,7 @@ var quizArray = [
     { question: 'Are you a people person?', response1: ['I love a party', 'dog'], response2: ['My pet is my social life', 'notActive'] },
     { question: 'Are you a nontraditional thinker?', response1: ['I think outside of the box', 'small'], response2: ['No ... is that the right answer?', 'large'] },
     { question: 'Are you an outdoorsy person?', response1: ['Yes! Adventure awaits', 'active'], response2: ['Id rather relax at home', 'notActive'] },
-    { question: 'How do you live?', response1: ['big yard, space to run', 'big'], response2: ['Its a tiny box, but its my tiny box!', 'small'] },
+    { question: 'How do you live?', response1: ['big yard, space to run', 'big'], response2: ['Its a tiny box, but its my box!', 'small'] },
     { question: 'Are you easily stressed?', response1: ['Nah, nothing phases me', 'dog'], response2: ['This quiz is a bit much for me...', 'cat'] },
 ];
 
@@ -66,11 +66,10 @@ function startQuiz() {
 function setQuestion(number) {
     clearPage();
 
-    $('<div/>').attr('class', 'card p-5 is-vcentered hero is-dark is-fullheight is-flex-direction-column').attr('id', 'contain').appendTo(document.body);
-    $('<div/>').attr('id', 'column').attr('class', 'card-content column is-8 has-text-primary is-size-4').appendTo('#contain');
+    $('<div/>').attr('id', 'column').attr('class', 'image-header').appendTo('#container2');
     $('<h1/>').attr('id', 'question').attr('class', '').text(quizArray[number].question).appendTo('#column');
-    $('<button/>').attr('class', 'button my-2 is-primary is-outlined').attr('id', quizArray[number].response1[1]).text(quizArray[number].response1[0]).appendTo('#column');
-    $('<button/>').attr('class', 'button my-2 is-primary is-outlined').attr('id', quizArray[number].response2[1]).text(quizArray[number].response2[0]).appendTo('#column');
+    $('<button/>').attr('class', 'uk-button uk-button-default uk-text-lowercase uk-margin').attr('id', quizArray[number].response1[1]).text(quizArray[number].response1[0]).appendTo('#column');
+    $('<button/>').attr('class', 'uk-button uk-button-default uk-text-lowercase uk-margin').attr('id', quizArray[number].response2[1]).text(quizArray[number].response2[0]).appendTo('#column');
 
     //listens for clicks on buttons with id "big" - adds +1 to petSize
     $('#big').on('click', function () {
@@ -97,7 +96,7 @@ function setQuestion(number) {
         petType--
     })
 
-    $('.button').on('click', function () {
+    $('.uk-button').on('click', function () {
 
         console.log("Pet Size: " + petSize);
         console.log("Pet active: " + petActive);
@@ -127,13 +126,12 @@ function setResults() {
     var petAbout = "placeholder";//need link to api
 
 
-    $('<div/>').attr('class', 'container box').attr('id', 'contain').appendTo(document.body);
-    $('<img/>').attr('id', 'pic').attr('href', petPic).appendTo('#contain');    
-    $('<h1/>').attr('id', 'name').text(petName).appendTo('#contain');    
-    $('<h2/>').attr('id', 'breed').text(petBreed).appendTo('#contain');    
-    $('<p/>').attr('id', 'about').text(petAbout).appendTo('#contain'); 
-    $('<button/>').attr('id', 'learnMore').text('Learn more').appendTo('#contain');
-    $('<button/>').attr('id', 'playAgain').text('Play again').appendTo('#contain');  
+    $('<img/>').attr('id', 'pic').attr('href', petPic).appendTo('#container2');    
+    $('<h1/>').attr('id', 'name').text(petName).appendTo('#container2');    
+    $('<h2/>').attr('id', 'breed').text(petBreed).appendTo('#container2');    
+    $('<p/>').attr('id', 'about').text(petAbout).appendTo('#container2'); 
+    $('<button/>').attr('class', 'uk-button uk-button-default uk-text-lowercase uk-margin').attr('id', 'learnMore').text('Learn more').appendTo('#container2');
+    $('<button/>').attr('class', 'uk-button uk-button-default uk-text-lowercase uk-margin').attr('id', 'playAgain').text('Play again').appendTo('#container2');  
     
     $('#learnMore').on('click', function () {
         clearPage();
@@ -251,7 +249,6 @@ function setResults() {
 
 //----------------------CLEAR PAGE FUNCTION---------------//
 function clearPage() {
-   // document.body.innerHTML = '';
 
-    $('#contain').children().remove();
+    $('#container2').children().remove();
 }
