@@ -73,10 +73,10 @@ function seeHistory() {
 function setQuestion(number) {
     clearPage();
 
-    $('<div/>').attr('id', 'column').attr('class', 'image-header uk-flex uk-flex-column uk-flex-center@m').appendTo('#container2');
-    $('<h1/>').attr('id', 'question').attr('class', '').text(quizArray[number].question).appendTo('#column');
-    $('<button/>').attr('class', 'uk-button uk-button-default uk-text-lowercase uk-margin uk-width-1-2@m').attr('id', quizArray[number].response1[1]).text(quizArray[number].response1[0]).appendTo('#column');
-    $('<button/>').attr('class', 'uk-button uk-button-default uk-text-lowercase uk-margin uk-width-1-2@m').attr('id', quizArray[number].response2[1]).text(quizArray[number].response2[0]).appendTo('#column');
+    $('<div/>').attr('id', 'column').attr('class', 'image-header uk-flex uk-flex-center uk-flex-column uk-flex-center@m').appendTo('#container2');
+    $('<h1/>').attr('id', 'question').attr('class', 'uk-text-center').text(quizArray[number].question).appendTo('#column');
+    $('<button/>').attr('class', 'uk-button uk-button-default uk-align-center uk-text-lowercase uk-margin uk-width-1-2@m').attr('id', quizArray[number].response1[1]).text(quizArray[number].response1[0]).appendTo('#column');
+    $('<button/>').attr('class', 'uk-button uk-button-default uk-align-center uk-text-lowercase uk-margin uk-width-1-2@m').attr('id', quizArray[number].response2[1]).text(quizArray[number].response2[0]).appendTo('#column');
 
 
     //listens for clicks on buttons with id "big" - adds +1 to petSize
@@ -216,7 +216,7 @@ function setResults() {
 
             $('<p/>').attr('id', 'about').attr('class', 'uk-text-muted').text(petAbout).appendTo('#card');
 
-            $('<button/>').attr('id', 'playAgain').attr('class', 'uk-width-1-2 uk-width-1-4@m').text('Play again').appendTo('#container2');
+            $('<button/>').attr('id', 'playAgain').attr('class', 'uk-width-2-3 uk-width-1-4@m  uk-align-center').text('Play again').appendTo('#container2');
             // $('<button/>').attr('id', 'learnMore').attr('class', 'uk-width-1-2 uk-width-1-4@m').text('Learn more').appendTo('#container2');
         
             // $('#learnMore').on('click', function () {
