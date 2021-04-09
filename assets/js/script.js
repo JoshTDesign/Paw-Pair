@@ -69,7 +69,7 @@ function seeHistory() {
 function setQuestion(number) {
     clearPage();
 
-    $('<div/>').attr('id', 'column').attr('class', 'image-header uk-flex uk-flex-center uk-flex-column uk-flex-center@m').appendTo('#container2');
+    $('<div/>').attr('id', 'column').attr('class', 'uk-animation-fade image-header uk-flex uk-flex-center uk-flex-column uk-flex-center@m').appendTo('#container2');
     $('<h1/>').attr('id', 'question').attr('class', 'uk-text-center').text(quizArray[number].question).appendTo('#column');
     $('<button/>').attr('class', 'uk-button uk-button-default uk-align-center uk-text-lowercase uk-margin uk-width-1-2@m').attr('id', quizArray[number].response1[1]).text(quizArray[number].response1[0]).appendTo('#column');
     $('<button/>').attr('class', 'uk-button uk-button-default uk-align-center uk-text-lowercase uk-margin uk-width-1-2@m').attr('id', quizArray[number].response2[1]).text(quizArray[number].response2[0]).appendTo('#column');
@@ -122,44 +122,34 @@ function setQuestion(number) {
     })
 }
 
+//This function uses fetch requests for two different API sources to generate random facts
 function randomFacts() {
     var factNum = Math.floor(Math.random() * 11);
-    console.log(factNum);
     if (factNum > 5) {
         fetch(dogurlToFetch).then(function (response) {
             return response.json()
         }).then(function (data) {
-            console.log(data);
-            $('<p/>').attr('id', 'dogFacts').attr('class', 'uk-text-muted uk-width-2-3 uk-width-1-4@m  uk-align-center').text('Did you know? ' + data[0].fact).appendTo('#container2');
+            $('<p/>').attr('id', 'dogFacts').attr('class', 'uk-animation-fade uk-text-muted uk-width-1-1 uk-width-1-2@m  uk-text-center uk-align-center').text('Did you know? ' + data[0].fact).appendTo('#container2');
         });
     } else {
         fetch(caturlToFetch).then(function (response) {
             return response.json()
         }).then(function (data) {
-            console.log(data);
-            $('<p/>').attr('id', 'catFacts').attr('class', 'uk-text-muted uk-width-2-3 uk-width-1-4@m  uk-align-center').text('Did you know? ' + data.data[0]).appendTo('#container2');
+            $('<p/>').attr('id', 'catFacts').attr('class', 'uk-animation-fade uk-text-muted uk-width-1-1 uk-width-1-2@m  uk-text-center uk-align-center').text('Did you know? ' + data.data[0]).appendTo('#container2');
         });
     }
 }
 
+//This function creates a variable to hold past saved results
 function history() {
     var savedPets = JSON.parse(localStorage.getItem(petToFetch))
-    console.log('savedPets: ', JSON.parse(savedPets));
 };
 
-//----------------------STEP FOUR-------------------------//
+//Set result function clears the current page and creates new content for the results page
 function setResults() {
     clearPage();
 
-    var placeholderPetPic = "placeholder";//need link to api
-    var placeholderPetName = "placeholder";//need link to api
-    var placeholderPetBreed = "placeholder";//need link to api
-    var placeholderPetAbout = "placeholder";//need link to api
-
-
-
-    // $('<div/>').attr('class', 'container box').attr('id', 'test').appendTo(document.body);
-    // $('<h1/>').attr('id', 'question').text('setResults Placeholder').appendTo('#test');
+    //These statement take quiz results and match them with possible compatible pets
     if (petSize == 0 && petActive <= 1 && petType > 2) {
         var type = "dog";
         var breed = "bolognese"
@@ -217,6 +207,8 @@ function setResults() {
 
         console.log(data);
 
+        $('<div/>').attr('class', 'uk-animation-slide-right uk-card uk-card-body uk-card-default uk-margin-small').attr('id', 'card').appendTo('#container2');
+
 
         fetch(petToFetch, {
             headers: { Authorization: `Bearer ${data.access_token}` }
@@ -229,7 +221,6 @@ function setResults() {
             console.log(petIndex);
 
             var petPic = data.animals[petIndex].photos[0];
-
             var petName = data.animals[petIndex].name;
             var petBreed1 = data.animals[petIndex].breeds.primary;
             var petBreed2 = data.animals[petIndex].breeds.secondary;
@@ -247,33 +238,37 @@ function setResults() {
             }
 
 
-            $('<div/>').attr('uk-height-viewport', 'expand: true').attr('class', 'uk-card uk-card-body uk-card-default uk-height-1-1 uk-margin-small').attr('id', 'card').appendTo('#container2');
             if (petPic === undefined){
                 petPic = './assets/images/pawPair_noPic.png';
-                $('<img/>').attr('id', 'pic').attr('class', 'uk-width-1-1 uk-width-1-2@m').attr('src', petPic).attr('height', '300px').attr('width', '200px').appendTo('#card');
+                $('<img/>').attr('id', 'pic').attr('class', 'uk-animation-fade uk-width-1-1 uk-width-1-2@m').attr('src', petPic).attr('height', '300px').attr('width', '200px').appendTo('#card');
             } else {
-                $('<img/>').attr('id', 'pic').attr('class', 'uk-width-1-1 uk-width-1-2@m').attr('src', petPic.large).attr('height', '300px').appendTo('#card');
+                $('<img/>').attr('id', 'pic').attr('class', 'uk-animation-fade uk-width-1-1 uk-width-1-2@m').attr('src', petPic.large).attr('height', '200px').appendTo('#card');
             }
-                $('<h1/>').attr('id', 'name').attr('class', 'uk-text-muted margin-small').text(petName).appendTo('#card');
+                $('<h1/>').attr('id', 'name').attr('class', 'uk-animation-fade uk-text-muted margin-small').text(petName).appendTo('#card');
             if (petBreed2 === null) {
-                $('<span/>').attr('id', 'breed').attr('class', 'uk-badge uk-secondary').text('Breed: ' + petBreed1).appendTo('#card');
+                $('<span/>').attr('id', 'breed').attr('class', 'uk-animation-fade uk-badge uk-secondary').text('Breed: ' + petBreed1).appendTo('#card');
             } else {
-                $('<span/>').attr('id', 'breed').attr('class', 'uk-badge uk-secondary').text('Breed: ' + petBreed1 + ' & ' + petBreed2).appendTo('#card');
+                $('<span/>').attr('id', 'breed').attr('class', 'uk-animation-fade uk-badge uk-secondary').text('Breed: ' + petBreed1 + ' & ' + petBreed2).appendTo('#card');
             }
             $('<span/>').attr('id', 'gender').attr('class', 'uk-badge uk-secondary').text('Age: ' + petAge).appendTo('#card');
             $('<span/>').attr('id', 'age').attr('class', 'uk-badge uk-secondary').text('Gender: ' + petGender).appendTo('#card');
             $('<span/>').attr('id', 'location').attr('class', 'uk-badge uk-secondary').text('Location: ' + petCity + ', ' + petState).appendTo('#card');
-            $('<span/>').attr('id', 'activityLevel').attr('class', 'uk-badge uk-secondary').text('Activity Level: ' + petActive).appendTo('#card');
+            // $('<span/>').attr('id', 'activityLevel').attr('class', 'uk-badge uk-secondary').text('Activity Level: ' + petActive).appendTo('#card');
             $('<p/>').attr('id', 'about').attr('class', 'uk-text-muted').text(petAbout).appendTo('#card');
-            $('<p/>').attr('id', 'email').attr('class', 'uk-text-muted uk-width-2-3 uk-width-1-4@m  uk-align-center').text('Interested? Send an email to ' + petEmail).appendTo('#card');
-            $('<button/>').attr('id', 'playAgain').attr('class', 'uk-width-2-3 uk-width-1-4@m  uk-align-center').text('Play again').appendTo('#container2');
+            $('<p/>').attr('id', 'email').attr('class', 'uk-text-muted').text('Interested? Send an email to ' + petEmail).appendTo('#card');
+            
+            $('<button/>').attr('id', 'startQuiz').attr('class', 'uk-button uk-button-default uk-align-center uk-text-lowercase uk-text-large uk-margin-small').text('Play again').appendTo('#card');
 
-            // $('<button/>').attr('id', 'learnMore').attr('class', 'uk-width-1-2 uk-width-1-4@m').text('Learn more').appendTo('#container2');
+            
+            $('<a/>').attr('id', 'savedPets').attr('class', 'uk-align-center uk-text-lowercase uk-text-large uk-text-center uk-margin-remove').attr('href', 'saved-pets.html').text('Matched pets').appendTo('#card');
 
             // $('#learnMore').on('click', function () {
             //     clearPage();
             //     // run function to get more info  about pet    
             // })
+
+    
+
             var history = JSON.parse(localStorage.getItem('history')) || [];
 
             var historyEntry = {
@@ -284,13 +279,19 @@ function setResults() {
                 petAbout: petAbout
             }
 
-            //update hisotry
+            //update history
             history.push(historyEntry);
-
+            if (history.length > 10) {
+                history.shift();
+                console.log(history)
+            }
             localStorage.setItem('history', JSON.stringify(history))
-            $('#playAgain').on('click', function () {
+            $('#startQuiz').on('click', function () {
                 clearPage();
                 startQuiz();
+            })
+            $('#savedPets').on('click', function () {
+                window.location.href='saved-pets.html';
             })
 
 
@@ -323,7 +324,12 @@ function setResults() {
 // function storedHistory() {
 //     localStorage.setItem('petToFetch', JSON.stringify(petToFetch));
 // }
-
+var historyButton = JSON.parse(localStorage.getItem('history'))
+if (historyButton === null) {
+    $('#savedPets').css('visibility', 'hidden');
+} else {
+    $('#savedPets').css('visibility', 'visible');
+}
 
 
 //----------------------CLEAR PAGE FUNCTION---------------//
