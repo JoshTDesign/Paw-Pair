@@ -1,4 +1,3 @@
-//add global variables
 //var start = $('#startQuiz');
 
 const quizContainer = document.getElementById('quiz');
@@ -19,10 +18,6 @@ var petToFetch = `https://api.petfinder.com/v2/animals?type=${type}&breed=${bree
 var dogurlToFetch = `https://boiling-meadow-47923.herokuapp.com/https://dog-facts-api.herokuapp.com/api/v1/resources/dogs?number=1`
 var caturlToFetch = `https://meowfacts.herokuapp.com/`
 
-//test url
-//var petToFetch = `https://api.petfinder.com/v2/animals?type=dog&breed=pug`;
-
-
 //quiz array
 var quizArray = [
     { question: 'Are you a people person?', response1: ['I love a party', 'dog'], response2: ['My pet is my social life', 'notActive'] },
@@ -35,8 +30,6 @@ var quizArray = [
 //Are you a people person - size (1) dog (2) active (2)
 //Are you a nontraditional thinker - size (0) cat (1), nonactive (-1), 
 //Are you an outdoorsy person - size (0) dog (3) active (3)
-//Are you artistic
-
 
 
 //-----------------------STEP ONE -------------------------//
@@ -108,9 +101,6 @@ function setQuestion(number) {
 
     $('.uk-button').on('click', function () {
 
-        console.log("Pet Size: " + petSize);
-        console.log("Pet active: " + petActive);
-        console.log("Pet type: " + petType);
 
         questionNumber++;
         clearPage();
@@ -205,7 +195,6 @@ function setResults() {
         return response.json()
     }).then(function (data) {
 
-        console.log(data);
 
         $('<div/>').attr('class', 'uk-animation-slide-right uk-card uk-card-body uk-card-default uk-margin-small').attr('id', 'card').appendTo('#container2');
 
@@ -216,9 +205,7 @@ function setResults() {
             return response.json()
             //  show reults of fetch
         }).then(function (data) {
-            console.log(data);
             var petIndex = Math.floor(Math.random() * 20);
-            console.log(petIndex);
 
             var petPic = data.animals[petIndex].photos[0];
             var petName = data.animals[petIndex].name;
@@ -262,12 +249,6 @@ function setResults() {
             
             $('<a/>').attr('id', 'savedPets').attr('class', 'uk-align-center uk-text-lowercase uk-text-large uk-text-center uk-margin-remove').attr('href', 'saved-pets.html').text('Matched pets').appendTo('#card');
 
-            // $('#learnMore').on('click', function () {
-            //     clearPage();
-            //     // run function to get more info  about pet    
-            // })
-
-    
 
             var history = JSON.parse(localStorage.getItem('history')) || [];
 
@@ -283,7 +264,6 @@ function setResults() {
             history.push(historyEntry);
             if (history.length > 10) {
                 history.shift();
-                console.log(history)
             }
             localStorage.setItem('history', JSON.stringify(history))
             $('#startQuiz').on('click', function () {
@@ -296,34 +276,10 @@ function setResults() {
 
 
         })
-        // .then(function () {
-
-        //     //add localStorage
-        //     var history = JSON.parse(localStorage.getItem('history')) || [];
-
-        //     var historyEntry = {
-        //         petPic: petPic,
-        //         petName: petName,
-        //         petBreed: petBreed,
-        //         petAbout: petAbout
-        //     }
-
-        //     //update hisotry
-        //     history.push(historyEntry);
-
-        //     localStorage.setItem('history', JSON.stringify(history))
-
-        // });
     });
-    //$('<button/>').attr('id', 'learnMore').text('Learn more').appendTo('#container2');
-
-
 
 }
 
-// function storedHistory() {
-//     localStorage.setItem('petToFetch', JSON.stringify(petToFetch));
-// }
 var historyButton = JSON.parse(localStorage.getItem('history'))
 if (historyButton === null) {
     $('#savedPets').css('visibility', 'hidden');

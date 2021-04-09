@@ -2,13 +2,10 @@ $(document).ready(function() {
 
     var history = JSON.parse(localStorage.getItem('history')) || [];
     
-    console.log("*****", history);
-    
     var petStr = "";
     history.forEach((pet) => {
         
         var petAboutVar = pet.petAbout;
-        console.log(pet.petAbout);
 
         if (pet.petAbout === null) {
             petStr += `
