@@ -18,17 +18,24 @@
 
 
 <body>
-  <div uk-height-viewport="expand: true" class="uk-container uk-background-secondary uk-inline uk-width-expand" id="container">
-    <div uk-height-viewport="expand: true" class="uk-flex uk-flex-column uk-flex-start uk-card uk-card-secondary uk-card-body uk-margin-top uk-margin-bottom uk-height-1-1" id="container2">
-     <div id="image-header" class="uk-flex uk-flex-center logo-container" width="300px">
-       <img data-src="assets/images/pawPair_logo.svg" width="500em" height="202px" uk-img>
-     </div>
-      <p class="uk-text-center uk-text-muted ">Every person is different, get matched with a dog to match your personality.</p>
-      <button class="uk-button uk-button-default uk-align-center uk-text-lowercase uk-text-large" id="startQuiz">Start Quiz</button>
-       <a href="saved-pets.html"><button class="uk-align-center uk-text-lowercase uk-text-large" id="savedPets">See saved pets</button></a>
-     
-
+  <div uk-height-viewport="expand: true" class="uk-width-large uk-width-2xlarge@m uk-padding-remove uk-container uk-background-secondary" id="container">
+    <div uk-height-viewport="expand: true" class="uk-margin-remove uk-flex uk-flex-column uk-flex-start uk-card uk-card-secondary uk-padding-small uk-card-body uk-margin-top uk-margin-bottom uk-height-1-1" id="container2">
+        
+        <div id="image-header" class="uk-flex uk-flex-center logo-container" width="300px">
+          <img data-src="assets/images/pawPair_logo.svg" width="500em" height="600px" uk-img>
+          <div class="uk-overlay uk-position-bottom uk-inline">
+            <button class="uk-button uk-button-default uk-align-center uk-text-lowercase uk-text-large" id="startQuiz">Start Quiz</button>
+            <a href="saved-pets.html">
+            <a class="uk-align-center uk-text-lowercase uk-text-large uk-text-center" id="savedPets" href="saved-pets.html">See saved pets</button></a>
+          </div>
+        </div>
+        
+        <div>
+          <p class="uk-text-center uk-text-muted ">Every person is different, get matched with a dog to match your personality.</p>
+        </div>
+    
     </div>
+
   </div>
 
 
