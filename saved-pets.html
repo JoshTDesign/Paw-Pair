@@ -7,10 +7,57 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
-    <title>Document</title>
+    <title>My Saved Pets</title>
 </head>
 <body>
-    <div class="saved-pet-container"></div>
-    <script src="./assets/js/saved-pets.js"></script>
+
+
 </body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.6.19/dist/css/uikit.min.css" />
+
+  <!-- UIkit JS -->
+  <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.19/dist/js/uikit.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.19/dist/js/uikit-icons.min.js"></script>
+  <link rel="stylesheet" href="./assets/css/styles.css">
+
+  <title>Paw Pair</title>
+</head>
+
+
+<body>
+  <div uk-height-viewport="expand: true" class="uk-width-large uk-width-2xlarge@m uk-padding-remove uk-container uk-background-secondary" id="container">
+    <div uk-height-viewport="expand: true" class="uk-margin-remove uk-flex uk-flex-column uk-flex-start uk-card uk-card-secondary uk-padding-small uk-card-body uk-margin-top uk-margin-bottom uk-height-1-1" id="container2">
+        <button class="uk-button uk-button-default uk-align-center uk-text-lowercase uk-text-large" id="goHome">Home</button>
+
+        <ul uk-accordion class="saved-pet-container"></ul>
+
+    </div>
+
+  </div>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="./assets/js/script.js"></script>
+  <script src="./assets/js/saved-pets.js"></script>
+  <script src="./assets/js/fetchScript.js"></script>
+
+
+</body>
+
 </html>
