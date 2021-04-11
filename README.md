@@ -20,3 +20,7 @@ https://github.com/AmandaNguyenn/group-project-1
 ## Screenshots
 
 ![Asset 2@4x](https://user-images.githubusercontent.com/78992027/114244648-b4cb1a00-9943-11eb-8c0b-9ec70be9d1a0.png)
+
+### Contact me
+Josh Taylor
+josh@joshtaylordesign.com
