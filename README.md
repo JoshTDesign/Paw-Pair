@@ -18,8 +18,8 @@ The tool relys on API's from Petfinder, Meow Facts, and Dog Facts.
 
 
 ## Links to project
-https://amandanguyenn.github.io/group-project-1/
-https://github.com/AmandaNguyenn/group-project-1
+https://joshtdesign.github.io/Paw-Pair/
+https://github.com/JoshTDesign/Paw-Pair
 
 
 ## Screenshots
